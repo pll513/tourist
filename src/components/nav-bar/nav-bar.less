@@ -1,0 +1,42 @@
+@import "../../variables";
+@nav-bar-height: 50px;
+
+.nav-bar {
+  border-top: 2px solid #e4e4e4;
+  border-bottom: 2px solid #e4e4e4;
+  padding: 0 8%;
+  width: 100%;
+  height: @nav-bar-height;
+  background: #fff;
+  font-size: 15px;
+}
+
+.nav-bar__nav-item {
+  float: left;
+  width: 33.3333%;
+  &.active {
+    .nav-bar__nav-item_txt {
+      color: @green-main;
+      &:after {
+        content: "";
+        position: absolute;
+        bottom: 2px;
+        left: 0;
+        display: block;
+        width: 100%;
+        height: 3px;
+        background: @green-main;
+      }
+    }
+  }
+}
+.nav-bar__nav-item_txt {
+  position: relative;
+  display: block;
+  margin-left: 10%;
+  width: 80%;
+  height: @nav-bar-height;
+  line-height: @nav-bar-height;
+  text-align: center;
+  color: @grey-main;
+}

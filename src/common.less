@@ -1,0 +1,116 @@
+@import "variables";
+@import "bootstrap.css";
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+input, button, textarea {
+  outline: 0;
+}
+
+::-webkit-scrollbar {
+  display: none !important;
+}
+
+.none {
+  display: none;
+}
+
+.clearfix {
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+    line-height: 0;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+.bg-grey {
+  z-index: -1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #f0f0f0;
+}
+
+.main {
+  z-index: 3;
+  position: fixed;
+  top: @header-height;
+  right: 0;
+  left: 0;
+  bottom: @footer-height;
+  overflow: scroll;
+}
+
+.main-no-bottom {
+  z-index: 3;
+  position: fixed;
+  top: @header-height;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  overflow: scroll;
+}
+
+
+
+.input {
+  border-radius: 2px;
+  border: 1px solid #e7e7e7;
+  height: 40px;
+  font-size: 20px;
+  &:focus {
+    border-color: #6e6e6e;
+  }
+}
+
+.button {
+  border: 0;
+  border-radius: 2px;
+  height: 40px;
+  font-size: 22px;
+  background: @green-main;
+  color: #fff;
+}
+
+.toast-it {
+  background-color: #666;
+  opacity: 0.8;
+  color: #f5f5f5;
+  padding: 3px 6px;
+  border-radius: 8px;
+  position: fixed;
+  z-index: 999;
+  top: 50%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 120px;
+  text-align: center;
+  //transform: translate(-50%, -80%);
+  //animation-name: TOAST-APPEAR;
+  //animation-timing-function: ease-in;
+  //animation-duration: 3s;
+}

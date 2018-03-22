@@ -1,0 +1,77 @@
+@import "../variables";
+
+#culture {
+  .nav-bar {
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    border-top: 0;
+  }
+  .main {
+
+  }
+  .culture-list {
+    margin-top: 50px;
+  }
+  .culture-item {
+    float: left;
+    display: block;
+    padding: 2px 0 12px;
+  }
+  .culture-item__img-list {
+    width: 100%;
+    &:before,
+    &:after {
+      display: table;
+      content: "";
+      line-height: 0;
+    }
+    &:after {
+      clear: both;
+    }
+  }
+  .culture-item__img-wrap {
+    position: relative;
+    float: left;
+    width: 33.33%;
+    height: 80px;
+  }
+  .culture-item__img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .culture-item__title {
+    width: 100%;
+    float: left;
+    padding: 8px 4px;
+    text-align: justify;
+    font-size: 20px;
+    color: #111;
+  }
+  .culture-item__info {
+    width: 100%;
+    float: left;
+    padding: 0 4px;
+    font-size: 14px;
+  }
+  .culture-item__type {
+    border: 1px solid @color-danger;
+    border-radius: 3px;
+    font-size: 13px;
+    color: @color-danger;
+
+  }
+  .culture-item__time {
+    margin: 0 8px;
+    color: #999;
+  }
+  .culture-item__read {
+    color: #999;
+  }
+}

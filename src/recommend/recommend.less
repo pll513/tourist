@@ -1,0 +1,97 @@
+@category-item-size: 72px;
+@recommend-item-border-radius: 6px;
+
+#recommend {
+  .form-group {
+    margin: 0;
+    .input-group {
+      margin: 0;
+    }
+  }
+  .category {
+    margin: 10px 20px;
+  }
+  .category-item-wrap {
+    float: left;
+    width: 25%;
+  }
+  .category-item {
+    display: block;
+    border-radius: 999px;
+    margin: 10%;
+    width: @category-item-size;
+    height: @category-item-size;
+    line-height: @category-item-size;
+    text-align: center;
+    color: #fff;
+    font-size: 24px;
+  }
+  .category-item.hotel {
+    background: #F39C12;
+    opacity: 0.6;
+  }
+  .category-item.food {
+    background: #E74C3C;
+    opacity: 0.6;
+  }
+  .category-item.show {
+    background: #18BC9C;
+    opacity: 0.6;
+  }
+  .category-item.activity {
+    background: #3498DB;
+    opacity: 0.6;
+  }
+  .recommend-list {
+    margin: 10px 20px;
+  }
+  .recommend-item {
+    position: relative;
+    display: block;
+    height: 160px;
+    border-radius: @recommend-item-border-radius;
+    & + .recommend-item {
+      margin-top: 8px;
+    }
+  }
+  .recommend-item__img-mask {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(60, 60, 60, 0.3);
+    border-radius: @recommend-item-border-radius;
+  }
+  .recommend-item__img {
+    z-index: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: @recommend-item-border-radius;
+  }
+
+  .recommend-item__title {
+    z-index: 9;
+    position: absolute;
+    top: 10px;
+    left: 5%;
+    width: 90%;
+    color: #fff;
+    font-size: 20px;
+  }
+  .recommend-item__desc {
+    top: 40px;
+    z-index: 9;
+    left: 5%;
+    width: 90%;
+    position: absolute;
+    color: #f7f7f7;
+    font-size: 15px;
+  }
+
+}

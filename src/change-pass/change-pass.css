@@ -1,0 +1,34 @@
+#change-pass .bg-grey {
+  background: #f6f6f6;
+}
+#change-pass .input-group {
+  border-bottom: 1px solid #ddd;
+  margin: 14px 40px;
+  padding: 10px 0;
+}
+#change-pass .input-group:first-child {
+  margin-top: 40px;
+}
+#change-pass .input-desc {
+  height: 30px;
+  line-height: 30px;
+  font-size: 18px;
+  color: #111;
+}
+#change-pass .input {
+  float: right;
+  border: 0;
+  width: 65%;
+  height: 30px;
+  background: transparent;
+}
+#change-pass .btn-wrap {
+  margin: 20px 40px;
+}
+#change-pass .change-btn {
+  width: 100%;
+  font-size: 20px;
+}
+#change-pass input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #f6f6f6 inset;
+}

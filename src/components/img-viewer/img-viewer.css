@@ -1,0 +1,14 @@
+.img-viewer {
+  z-index: 99;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(96, 96, 96, 0.9);
+}
+.img-viewer__img {
+  display: inline-block;
+  vertical-align: middle;
+  width: 100%;
+}

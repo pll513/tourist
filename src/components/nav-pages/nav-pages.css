@@ -1,0 +1,52 @@
+.nav-pages {
+  position: relative;
+  margin-top: 180px;
+}
+.nav-pages .nav-bar {
+  position: fixed;
+  top: 180px;
+  left: 0;
+  width: 100%;
+}
+.nav-pages__content {
+  position: fixed;
+  bottom: 76px;
+  top: 230px;
+  left: 0;
+  width: 100%;
+  overflow: scroll;
+}
+.nav-pages__page {
+  width: 100%;
+}
+.nav-page__list-item {
+  display: block;
+  padding: 0 10px;
+}
+.nav-page__list-item-content {
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+  color: #555;
+}
+.btn-pay {
+  margin-top: 20px;
+  float: left;
+  margin-left: 20%;
+  width: 60%;
+  height: 60px;
+  line-height: 60px;
+  font-size: 24px;
+  text-align: center;
+  border-radius: 6px;
+}
+.btn-recommend {
+  margin-top: 20px;
+  float: left;
+  margin-left: 20%;
+  width: 60%;
+  height: 60px;
+  line-height: 60px;
+  font-size: 24px;
+  text-align: center;
+  border-radius: 6px;
+}

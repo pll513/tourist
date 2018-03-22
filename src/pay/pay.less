@@ -1,0 +1,111 @@
+#pay {
+  .main-no-bottom {
+    padding: 0 10px;
+  }
+  .budget {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 180px;
+
+  }
+  .budget__img {
+    z-index: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+  }
+  .budget__img-mask {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background: rgba(60, 60, 60, 0.3);
+  }
+  .budget__title {
+    z-index: 9;
+    position: absolute;
+    width: 80%;
+    left: 10%;
+    top: 20px;
+    color: #fff;
+    font-size: 24px;
+  }
+  .budget__content {
+    z-index: 9;
+    position: absolute;
+    left: 5%;
+    width: 90%;
+    top: 60px;
+    color: #f7f7f7;
+    font-size: 17px;
+    line-height: 18px;
+
+  }
+  .ticket-wrap {
+    margin-top: 192px;
+  }
+  .full-ticket-wrap {
+    float: left;
+    width: 100%;
+  }
+  .left-ticket-wrap {
+    float: left;
+    width: 50%;
+    padding: 0 10px 0 0;
+  }
+  .right-ticket-wrap {
+    float: right;
+    width: 50%;
+    padding: 0 0 0 10px;
+  }
+  .ticket {
+    display: block;
+    padding: 10px 0;
+    height: 100px;
+    width: 100%;
+    border-radius: 4px;
+  }
+  .ticket__head {
+    color: #fff;
+    text-align: center;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    height: 24px;
+  }
+  .ticket__desc {
+    color: #fff;
+    width: 80%;
+    margin-left: 10%;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: justify;
+  }
+  .full-ticket {
+    width: 100%;
+    height: 120px;
+  }
+  .half-ticket {
+    width: 100%;
+    height: 120px;
+  }
+  .group-ticket {
+    margin: 12px 0;
+    width: 100%;
+  }
+  .card {
+    margin: 0;
+  }
+  .card-header {
+    padding: 6px;
+  }
+
+  .card-text {
+    margin: 6px 0;
+  }
+}

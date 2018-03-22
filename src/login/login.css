@@ -1,0 +1,41 @@
+#login .link-register {
+  display: block;
+  width: 200px;
+  text-align: center;
+  margin: auto;
+  font-size: 24px;
+}
+#login .bg-grey {
+  background: #f6f6f6;
+}
+#login .input-group {
+  border-bottom: 1px solid #ddd;
+  margin: 14px 40px;
+  padding: 10px 0;
+}
+#login .input-group:first-child {
+  margin-top: 40px;
+}
+#login .input-desc {
+  height: 30px;
+  line-height: 30px;
+  font-size: 18px;
+  color: #111;
+}
+#login .input {
+  float: right;
+  border: 0;
+  width: 65%;
+  height: 30px;
+  background: transparent;
+}
+#login .btn-wrap {
+  margin: 20px 40px;
+}
+#login .login-btn {
+  width: 100%;
+  font-size: 20px;
+}
+#login input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #f6f6f6 inset;
+}

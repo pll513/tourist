@@ -1,0 +1,38 @@
+@input-line-height: 30px;
+
+#change-pass {
+  .bg-grey {
+    background: #f6f6f6;
+  }
+  .input-group {
+    border-bottom: 1px solid #ddd;
+    margin: 14px 40px;
+    padding: 10px 0;
+    &:first-child {
+      margin-top: 40px;
+    }
+  }
+  .input-desc {
+    height: @input-line-height;
+    line-height: @input-line-height;
+    font-size: 18px;
+    color: #111;
+  }
+  .input {
+    float: right;
+    border: 0;
+    width: 65%;
+    height: @input-line-height;
+    background: transparent;
+  }
+  .btn-wrap {
+    margin: 20px 40px;
+  }
+  .change-btn {
+    width: 100%;
+    font-size: 20px;
+  }
+  input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #f6f6f6 inset;
+  }
+}

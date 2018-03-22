@@ -1,0 +1,42 @@
+@import "../../variables";
+
+.nav-header {
+  z-index: 6;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: @header-height;
+  background: #fff;
+  border-bottom: 1px solid #cdcdcd;
+}
+
+.nav-header__back {
+  z-index: 9;
+  position: absolute;
+  bottom: 16px;
+  left: 10px;
+  height: 32px;
+  width: 32px;
+  .icon-back {
+    &:before {
+      font-size: 28px;
+      color: #6e6e6e;
+    }
+  }
+}
+
+.nav-header__back-icon {
+
+}
+
+.nav-header__title {
+  z-index: 1;
+  position: absolute;
+  right: 0;
+  bottom: 16px;
+  left: 0;
+  text-align: center;
+  font-size: 22px;
+  color: #111;
+}

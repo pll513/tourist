@@ -1,0 +1,71 @@
+@import "../variables";
+
+#route {
+  .main-no-bottom {
+    padding: 10px 20px 20px;
+  }
+
+  .route-item {
+    background: #fff;
+    border-radius: 4px;
+    padding: 12px 6px;
+    box-shadow: 1px 2px #ddd;
+  }
+  .route-item__title {
+    margin: 0;
+    font-size: 20px;
+    color: #222;
+  }
+  .route-item__text {
+    margin: 12px 0;
+    font-size: 16px;
+    color: #444;
+  }
+  .route-item__img {
+    margin: 12px 0;
+    width: 100%;
+  }
+  .route-item__more {
+    margin-right: 22px;
+    color: @color-primary;
+    font-size: 18px;
+    .icon-more {
+      position: relative;
+      &:before {
+        position: absolute;
+        top: -4px;
+        left: 0;
+        font-size: 20px;
+        color: @color-primary;
+        font-weight: 700;
+      }
+    }
+  }
+
+  .distance {
+    position: relative;
+
+  }
+  .distance__dot-wrap {
+    text-align: center;
+    margin-bottom: 5px;
+  }
+  .distance__dot {
+    margin: 5px auto 0;
+    border-radius: 99px;
+    width: 6px;
+    height: 6px;
+    background: #ccc;
+  }
+  .distance__value {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 55%;
+    margin: auto;
+    height: 24px;
+    line-height: 24px;
+    font-size: 19px;
+    color: #666;
+  }
+}

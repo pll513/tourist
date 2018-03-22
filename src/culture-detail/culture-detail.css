@@ -1,0 +1,21 @@
+#culture-detail .main-no-bottom {
+  padding: 10px 20px;
+}
+#culture-detail .article-title {
+  margin: 12px 0;
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+  color: #111;
+}
+#culture-detail .article-para {
+  margin: 12px 0;
+  font-size: 18px;
+  line-height: 20px;
+  text-indent: 2em;
+  text-align: justify;
+  color: #222;
+}
+#culture-detail .article-img {
+  width: 100%;
+}
