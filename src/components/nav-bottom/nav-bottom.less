@@ -5,12 +5,12 @@
   bottom: 0;
   left: 0;
   border-top: 1px solid #ddd;
-  padding: 4px 0;
   width: 100%;
   height: @footer-height;
-  box-shadow: 0 -2px 4px #ddd;
+  //box-shadow: 0 -2px 4px #ddd;
   background: #fff;
 }
+
 .nav-bottom__nav-item {
   float: left;
   width: 33.3333%;
@@ -18,23 +18,29 @@
   text-decoration: none;
   color: @grey-icon;
   &.active {
-    color: @green-main;
+    .nav-bottom__nav-item_img:before {
+      color: @color-primary;
+    }
     .nav-bottom__nav-item_txt {
-      color: @green-main;
+      color: @color-primary;
     }
   }
 }
+
 .nav-bottom__nav-item_img {
 
   &:before {
     font-size: 24px;
+    color: @grey-light;
   }
 }
+
 .nav-bottom__nav-item_txt {
+  margin-top: -4px;
   float: left;
   clear: left;
   width: 100%;
   text-align: center;
-  font-size: 16px;
+  font-size: 13px;
   color: @grey-light;
 }

@@ -3,10 +3,8 @@
   bottom: 0;
   left: 0;
   border-top: 1px solid #ddd;
-  padding: 4px 0;
   width: 100%;
-  height: 64px;
-  box-shadow: 0 -2px 4px #ddd;
+  height: 54px;
   background: #fff;
 }
 .nav-bottom__nav-item {
@@ -16,20 +14,22 @@
   text-decoration: none;
   color: #9a9a9a;
 }
-.nav-bottom__nav-item.active {
-  color: #37c2b2;
+.nav-bottom__nav-item.active .nav-bottom__nav-item_img:before {
+  color: #947bff;
 }
 .nav-bottom__nav-item.active .nav-bottom__nav-item_txt {
-  color: #37c2b2;
+  color: #947bff;
 }
 .nav-bottom__nav-item_img:before {
   font-size: 24px;
+  color: #888;
 }
 .nav-bottom__nav-item_txt {
+  margin-top: -4px;
   float: left;
   clear: left;
   width: 100%;
   text-align: center;
-  font-size: 16px;
-  color: #aaa;
+  font-size: 13px;
+  color: #888;
 }

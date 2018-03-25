@@ -33,6 +33,10 @@ class Home extends React.Component {
             <div id="home">
                 <Link className="home-link problem" to={"#"}>常见问题</Link>
                 <Link className="home-link contact" to={"#"}>联系我们</Link>
+                <h2 className={"banner-title"}>阿坝州旅游</h2>
+                <div className={"banner-intro"}>生态阿坝富饶神奇，立体气候明显，阿坝州旅游资源分布图地理环境独特。</div>
+                <div className="slide-mask"></div>
+                <Link to={"/pay"} className="btn-banner-ticket btn btn-success">点击购票</Link>
                 <div className={"slider-wrap"}>
                     <Slider speed={1000} delay={3000}>
                         <div className="slider-item">

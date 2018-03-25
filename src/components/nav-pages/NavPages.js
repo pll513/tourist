@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import {BASE_URL} from '../../config/network';
 import "whatwg-fetch";
 import './nav-pages.css';
+import img1 from '../../imgs/slider2.jpg';
 
 class NavPages extends React.Component {
     constructor(props) {
@@ -33,7 +34,7 @@ class NavPages extends React.Component {
                 });
             })
         });
-    
+        
         fetch(BASE_URL + '/paths', {
             method: 'GET',
             headers: {
@@ -69,11 +70,17 @@ class NavPages extends React.Component {
                     <div className="nav-pages__content">
                         <div className={"nav-pages__page sights" + (pos === 0 ? '' : ' none')}>
                             {sights.map((sight, index) => {
+                                let img = img1;
+                                if (sight.photo && sight.photo[0]) img = sight.photo[0];
                                 return (
                                     <Link className={"nav-page__list-item"} key={index}
                                           to={{pathname: '/sight', query: {sight_id: sight.sight_id, from: 'index'}}}>
-                                        <div className="nav-page__list-item-content">
+                                        <img className="sight-item__img" src={img} alt=""/>
+                                        <div className="sight-item__title">
                                             {sight.name}
+                                        </div>
+                                        <div className="sight-item__desc">
+                                            {sight.des.impression}
                                         </div>
                                     </Link>
                                 );
@@ -81,11 +88,26 @@ class NavPages extends React.Component {
                         </div>
                         <div className={"nav-pages__page" + (pos === 1 ? '' : ' none')}>
                             {routes.map((route, index) => {
+                                let sights = [];
+                                if (route.sights) sights = route.sights.slice(0,4);
+                                console.log(index + '-------');
+                                console.log(sights);
                                 return (
                                     <Link className={"nav-page__list-item"} key={index}
                                           to={{pathname: '/route', query: {route_id: route.path_id}}}>
-                                        <div className="nav-page__list-item-content">
+                                        <div className="route__name">
                                             {route.name}
+                                        </div>
+                                        <div className={"route-list clearfix"}>
+                                            {sights.map((sight, index) => {
+                                                let photo = sight.photo || img1;
+                                                return (
+                                                    <div className={"route__sight"} key={index}>
+                                                        <img className={"route__sight-img"} src={photo} alt=""/>
+                                                        <div className={"route__sight-name"}>{sight.name}</div>
+                                                    </div>
+                                                );
+                                            })}
                                         </div>
                                     </Link>
                                 );

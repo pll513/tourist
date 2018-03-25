@@ -5,6 +5,8 @@ import NavBottom from '../components/nav-bottom/NavBottom';
 import 'whatwg-fetch';
 import {BASE_URL} from '../config/network';
 import "./blog.css";
+import {Link, Redirect} from 'react-router-dom';
+import {loadToken, isValidPassword} from '../utils/utils';
 import img1 from "../imgs/slider1.jpg";
 import img2 from "../imgs/slider2.jpg";
 
@@ -24,7 +26,20 @@ class Blog extends React.Component {
     }
     
     componentDidMount() {
-        
+        fetch(BASE_URL + '/find', {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json'
+            }
+        }).then((res) => {
+            return res.json().then((data) => {
+                console.log(data);
+                this.setState({
+                    postsLoaded: true,
+                    posts: data
+                });
+            })
+        });
     }
     
     _handleCameraClick() {
@@ -67,6 +82,12 @@ class Blog extends React.Component {
     }
     
     render() {
+        if (!loadToken()) {
+            return <Redirect push to={{
+                pathname: '/login',
+                query: {from: '/blog'}
+            }}/>;
+        }
         let {showImgViewer, imgUrl, showPhotoForm, postsLoaded, posts, formImgs} = this.state;
         return (
             <div id="blog">
@@ -89,25 +110,23 @@ class Blog extends React.Component {
                             <i className="iconfont icon-add"/>
                         </label>
                         <input style={{display: 'none'}} id="img-upload" type="file" multiple="multiple" accept="image/*" onChange={(event)=> {
-                            
-                            console.log(fetch);
+                            // upload photos
                             let files = event.target.files;
-                            let formData = new FormData();
                             if (!files || files.length === 0) {
-                                
                                 return;
                             }
-                            formData.append('imgs', files);
+                            let formData = new FormData();
+                            formData.append('photos', files);
                             console.log(formData);
-                            fetch('http://localhost:5000/blog/img-upload', {
+                            fetch(BASE_URL + '/uploads', {
                                 method: 'POST',
                                 headers: {
-                                
+                                    'Authorization': 'Basic ' + window.btoa('18428359569:224930')
                                 },
                                 body: formData
                             }).then((data) => {
                                 console.log(data);
-                                let formImgs = JSON.parse(data.imgs);
+                                let formImgs = JSON.parse(data);
                                 this.setState({
                                     formImgs: formImgs
                                 });
@@ -126,84 +145,37 @@ class Blog extends React.Component {
                 <div className="main">
                     <div className={showPhotoForm ? "photo-form-bg" : "none photo-form-bg"}></div>
                     <div className="blog-list">
-                        <div className="blog-item">
-                            <div className="blog-item__user">啦啦啦</div>
-                            <div className="blog-item__content">积极久急救就跌就跌大家诶简单</div>
-                            <div className="blog-item__imgs">
-                                <div className="blog-item__img-wrap" onClick={() => {
-                                    this.setState({
-                                        showImgViewer: true,
-                                        imgUrl: ''
-                                    });
-                                }}>
-                                    <img className="blog-item__img" src={img1}/>
+                        {posts.map((post, index) => {
+                            return (
+                                <div className="blog-item" key={index}>
+                                    <div className="blog-item__user">啦啦啦</div>
+                                    <div className="blog-item__content">{post.content}</div>
+                                    <div className="blog-item__imgs">
+                                        {post.photos.map((photo, index) => {
+                                            return (
+                                                <div className="blog-item__img-wrap" key={index} onClick={() => {
+                                                    this.setState({
+                                                        showImgViewer: true,
+                                                        imgUrl: photo
+                                                    });
+                                                }}>
+                                                    <img className="blog-item__img" src={photo}/>
+                                                </div>
+                                            );
+                                        })}
+                                    </div>
+                                    <div className="blog-item__info">
+                                        <div className="blog-item__time">{post.time}</div>
+                                        <div className="blog-item__like" onClick={(event) => {
+                                            console.log(event.target);
+                                        }}>
+                                            <i className="iconfont icon-favorites"/>
+                                            <span className="blog-item__like-count">{post.likes}</span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div className="blog-item__img-wrap">
-                                    <img className="blog-item__img" src={img2}/>
-                                </div>
-                                <div className="blog-item__img-wrap">
-                                    <img className="blog-item__img" src={img2}/>
-                                </div>
-                                <div className="blog-item__img-wrap">
-                                    <img className="blog-item__img" src={img2}/>
-                                </div>
-                            </div>
-                            <div className="blog-item__info">
-                                <div className="blog-item__time">2017-10-4</div>
-                                <div className="blog-item__like">
-                                    <i className="iconfont icon-favorites"/>
-                                    <span className="blog-item__like-count">123</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="blog-item">
-                            <div className="blog-item__user">啦啦啦</div>
-                            <div className="blog-item__content">积极久急救就跌就跌大家诶简单</div>
-                            <div className="blog-item__imgs">
-                                <div className="blog-item__img-wrap" onClick={() => {
-                                    this.setState({
-                                        showImgViewer: true,
-                                        imgUrl: ''
-                                    });
-                                }}>
-                                    <img className="blog-item__img" src={img1}/>
-                                </div>
-                                <div className="blog-item__img-wrap">
-                                    <img className="blog-item__img" src={img2}/>
-                                </div>
-                            </div>
-                            <div className="blog-item__info">
-                                <div className="blog-item__time">2017-10-4</div>
-                                <div className="blog-item__like">
-                                    <i className="iconfont icon-favorites"/>
-                                    <span className="blog-item__like-count">123</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="blog-item">
-                            <div className="blog-item__user">啦啦啦</div>
-                            <div className="blog-item__content">积极久急救就跌就跌大家诶简单</div>
-                            <div className="blog-item__imgs">
-                                <div className="blog-item__img-wrap" onClick={() => {
-                                    this.setState({
-                                        showImgViewer: true,
-                                        imgUrl: ''
-                                    });
-                                }}>
-                                    <img className="blog-item__img" src={img1}/>
-                                </div>
-                                <div className="blog-item__img-wrap">
-                                    <img className="blog-item__img" src={img2}/>
-                                </div>
-                            </div>
-                            <div className="blog-item__info">
-                                <div className="blog-item__time">2017-10-4</div>
-                                <div className="blog-item__like">
-                                    <i className="iconfont icon-favorites"/>
-                                    <span className="blog-item__like-count">123</span>
-                                </div>
-                            </div>
-                        </div>
+                            );
+                        })}
                     </div>
                 </div>
                 <ImgViewer imgUrl={imgUrl} show={showImgViewer} hideImgViewer={() => {

@@ -1,11 +1,18 @@
+#home {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: #f5f6f7;
+}
 #home .home-link {
   position: fixed;
   z-index: 99;
   color: #fff;
   border: 1px solid #fff;
   border-radius: 12px;
-  padding: 2px 5px;
-  font-size: 13px;
+  -webkit-border-radius: 12px;
+  padding: 1px 5px;
+  font-size: 12px;
   line-height: 16px;
 }
 #home .home-link.problem {
@@ -16,12 +23,60 @@
   top: 10px;
   right: 84px;
 }
+#home .banner-title {
+  z-index: 99;
+  top: 60px;
+  position: fixed;
+  width: 100%;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 400;
+  color: #fff;
+}
+#home .banner-intro {
+  z-index: 99;
+  top: 92px;
+  padding: 0 14px;
+  position: fixed;
+  width: 100%;
+  line-height: 17px;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  color: #fff;
+}
+#home .btn-banner-ticket {
+  width: 120px;
+  height: 34px;
+  padding: 0;
+  line-height: 34px;
+  top: 140px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  text-align: center;
+  position: fixed;
+  z-index: 99;
+  font-size: 17px;
+  color: #fff;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+}
+#home .slide-mask {
+  z-index: 11;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  background: rgba(80, 80, 80, 0.2);
+}
 #home .slide {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 180px;
+  height: 200px;
 }
 #home .slide__img {
   position: absolute;
@@ -34,7 +89,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 180px;
+  height: 200px;
 }
 #home .slider-item {
   width: 100%;

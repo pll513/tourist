@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 0;
 }
-a {
+a:hover {
   text-decoration: none;
 }
 ul,
@@ -50,7 +50,7 @@ textarea {
   top: 76px;
   right: 0;
   left: 0;
-  bottom: 64px;
+  bottom: 54px;
   overflow: scroll;
 }
 .main-no-bottom {
@@ -76,7 +76,7 @@ textarea {
   border-radius: 2px;
   height: 40px;
   font-size: 22px;
-  background: #37c2b2;
+  background: #3FB618;
   color: #fff;
 }
 .toast-it {
