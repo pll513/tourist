@@ -6,6 +6,7 @@
   width: 100%;
   height: 100%;
   background: rgba(96, 96, 96, 0.9);
+  line-height: 100%;
 }
 .img-viewer__img {
   display: inline-block;

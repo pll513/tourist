@@ -98,7 +98,7 @@ class NavPages extends React.Component {
         if (sightsLoaded && routesLoaded) {
             navPageHtml = (
                 <div className="nav-pages">
-                    <NavBar txts={['必游美景', '推荐路线', '服务']} pos={pos}
+                    <NavBar txts={['必游美景', '推荐路线', '地理位置']} pos={pos}
                             updatePosition={(newPos) => this._updatePosition(newPos)}/>
                     <div className="nav-pages__content">
                         <div className={"nav-pages__page sights" + (pos === 0 ? '' : ' none')}>
@@ -113,7 +113,7 @@ class NavPages extends React.Component {
                                             {sight.name}
                                         </div>
                                         <div className="sight-item__desc">
-                                            {sight.des.impression}
+                                            {sight.des ? sight.des.impression : ''}
                                         </div>
                                     </Link>
                                 );
@@ -164,7 +164,7 @@ class NavPages extends React.Component {
         } else {
             navPageHtml = (
                 <div className="nav-pages">
-                    <NavBar txts={['必游美景', '推荐路线', '天气预报']} pos={pos}
+                    <NavBar txts={['必游美景', '推荐路线', '地理位置']} pos={pos}
                             updatePosition={(newPos) => this._updatePosition(newPos)}/>
                     <div className="nav-pages__content">
 

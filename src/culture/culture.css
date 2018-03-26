@@ -1,18 +1,23 @@
 #culture .nav-bar {
   z-index: 10;
-  position: absolute;
-  top: 0;
+  position: fixed;
+  top: 76px;
   left: 0;
   width: 100%;
   border-top: 0;
+}
+#culture .main {
+  background: #f5f6f7;
 }
 #culture .culture-list {
   margin-top: 50px;
 }
 #culture .culture-item {
+  margin-top: 8px;
   float: left;
   display: block;
-  padding: 2px 0 12px;
+  padding: 10px;
+  background: #fff;
 }
 #culture .culture-item__img-list {
   width: 100%;
@@ -28,6 +33,7 @@
 }
 #culture .culture-item__img-wrap {
   position: relative;
+  padding: 0 5px;
   float: left;
   width: 33.33%;
   height: 80px;
@@ -39,6 +45,8 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
 }
 #culture .culture-item__title {
   width: 100%;

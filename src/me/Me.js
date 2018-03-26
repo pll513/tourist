@@ -52,7 +52,12 @@ class Me extends React.Component {
                         </li>
                     </ul>
                     <div className={"logout-wrap"}>
-                        <button className={"btn-logout btn btn-danger"}>注销</button>
+                        <button className={"btn-logout btn btn-danger"} onClick={() => {
+                            localStorage.removeItem('token');
+                            this.setState({
+                               redirect: true
+                            });
+                        }}>注销</button>
                     </div>
                 </div>
                 <NavBottom pos={2}/>

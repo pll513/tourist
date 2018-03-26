@@ -73,6 +73,14 @@
   font-size: 40px;
   color: #ccc;
 }
+#blog .photo-form__location-title {
+  font-size: 16px;
+  color: #222;
+}
+#blog .photo-form__location-value {
+  font-size: 15px;
+  color: #888;
+}
 #blog .btn-wrap {
   padding: 8px 0;
 }
