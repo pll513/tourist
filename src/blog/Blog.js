@@ -22,6 +22,7 @@ class Blog extends React.Component {
             imgUrl: '',
             showPhotoForm: false,
             formImgs: [],
+            address: '',
         };
     }
     
@@ -41,11 +42,77 @@ class Blog extends React.Component {
             })
         });
     }
+
+    _getLocation() {
+        let options={
+            enableHighAccuracy:true, //boolean 是否要求高精度的地理信息，默认为false
+            maximumAge:1000 //应用程序的缓存时间
+        };
+
+        if(navigator.geolocation){
+            //浏览器支持geolocation
+            navigator.geolocation.getCurrentPosition(this._onSuccess,this._onError,options);
+
+        }else{
+            //浏览器不支持geolocation
+            console.log("浏览器不支持!");
+        }
+    }
+
+    _onSuccess(position){
+        let BMap = window.BMap;
+        //返回用户位置
+        //经度
+        let longitude =position.coords.longitude;
+        //纬度
+        let latitude = position.coords.latitude;
+
+        alert(longitude + ' ' + latitude);
+        console.log(longitude + ' ' + latitude);
+
+        let geoc = new BMap.Geocoder();
+        geoc.getLocation(new BMap.Point(longitude, latitude), function (rs) {
+            console.log(rs);
+            console.log(rs.address);
+        });
+    }
+
+    _onError(error){
+        switch(error.code){
+            case error.PERMISSION_DENIED:
+                alert("用户拒绝对获取地理位置的请求");
+                break;
+
+            case error.POSITION_UNAVAILABLE:
+                alert("位置信息是不可用的");
+                break;
+
+            case error.TIMEOUT:
+                alert("请求用户地理位置超时");
+                break;
+
+            case error.UNKNOWN_ERROR:
+                alert("未知错误");
+                break;
+        }
+    }
     
     _handleCameraClick() {
+        let BMap = window.BMap;
+        if (!this.state.showPhotoForm) {
+            // 如果刚刚展开
+            let geoc = new BMap.Geocoder();
+            geoc.getLocation(new BMap.Point(116.322987, 39.983424), (rs) => {
+                console.log(rs.address);
+                this.setState({
+                    address: rs.address
+                });
+            });
+        }
         this.setState({
             showPhotoForm: !this.state.showPhotoForm
         });
+
     }
     
     _hideImgViewer() {
@@ -82,12 +149,12 @@ class Blog extends React.Component {
     }
     
     render() {
-        if (!loadToken()) {
-            return <Redirect push to={{
-                pathname: '/login',
-                query: {from: '/blog'}
-            }}/>;
-        }
+        // if (!loadToken()) {
+        //     return <Redirect push to={{
+        //         pathname: '/login',
+        //         query: {from: '/blog'}
+        //     }}/>;
+        // }
         let {showImgViewer, imgUrl, showPhotoForm, postsLoaded, posts, formImgs} = this.state;
         return (
             <div id="blog">
@@ -134,6 +201,10 @@ class Blog extends React.Component {
                             })
                             
                         }}/>
+                    </div>
+                    <div className={"photo-form__location"}>
+                        <span className={"photo-form__location-title"}>地理位置</span>
+                        <span className={"photo-form__location-value"}>{this.state.address}</span>
                     </div>
                     <div className="btn-wrap clearfix">
                         <input type="button" value="发表" className="btn-submit"/>

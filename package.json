@@ -5,6 +5,7 @@
   "dependencies": {
     "jquery": "^3.3.1",
     "react": "^16.2.0",
+    "react-bmap": "^1.0.69",
     "react-dom": "^16.2.0",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
