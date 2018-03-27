@@ -65,28 +65,6 @@ class Register extends React.Component {
     _handleSubmit() {
         let {phone, nickname, pwd1, pwd2} = this.state;
         if (!this._validate()) return;
-        // 跳转到登陆界面
-        // post
-        // $.ajax({
-        //     url: BASE_URL + '/users',
-        //     method: 'POST',
-        //     data: {
-        //         phone: phone,
-        //         name: nickname,
-        //         password: pwd1,
-        //     },
-        //     success: function(data) {
-        //         console.log(data);
-        //     },
-        //     fail: function(data) {
-        //         console.log(data);
-        //     },
-        // });
-        console.log({
-            phone: phone,
-            name: nickname,
-            password: pwd1,
-        });
         fetch(BASE_URL + '/users', {
             method: 'POST',
             body: JSON.stringify({
@@ -111,7 +89,6 @@ class Register extends React.Component {
                     
                 }
             })
-            
         })
     }
     
@@ -124,32 +101,42 @@ class Register extends React.Component {
                 <div className={"bg-grey"}></div>
                 <NavHeader backurl={"/"} title={"注册"}/>
                 <div className="main-no-bottom">
-                    <div className="input-group">
-                        <label htmlFor="phone" className={"input-desc"}>手&nbsp;机&nbsp;号</label>
-                        <input id={"phone"} className={"input"} type="text" onChange={(event) => {
-                            this.setState({phone: event.target.value});
+                    <div className="form-group">
+                        <label htmlFor="phone" className={"input-desc"}>手机号</label>
+                        <input id={"phone"} className={"form-control"} type="text" placeholder="请输入您的手机号..." onChange={(event) => {
+                            this.setState({
+                                phone: event.target.value
+                            });
                         }}/>
                     </div>
-                    <div className="input-group">
-                        <label htmlFor="phone" className={"input-desc"}>昵&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称</label>
-                        <input id={"nickname"} className={"input"} type="text" onChange={(event) => {
-                            this.setState({nickname: event.target.value});
+                    <div className="form-group">
+                        <label htmlFor="nickname" className={"input-desc"}>昵称</label>
+                        <input id={"nickname"} className={"form-control"} type="text" placeholder="请输入您的昵称..." onChange={(event) => {
+                            this.setState({
+                                nickname: event.target.value
+                            });
                         }}/>
                     </div>
-                    <div className="input-group">
-                        <label htmlFor="password1" className={"input-desc"}>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码</label>
-                        <input id={"password1"} className={"input"} type="password" onChange={(event) => {
-                            this.setState({pwd1: event.target.value});
+                    <div className="form-group">
+                        <label htmlFor="pwd1" className={"input-desc"}>密码</label>
+                        <input id={"pwd1"} className={"form-control"} type="password" placeholder="请输入您的密码..." onChange={(event) => {
+                            this.setState({
+                                pwd1: event.target.value
+                            });
                         }}/>
+                        <small className="form-text text-muted">密码为6到20位的数字字母或者字符</small>
                     </div>
-                    <div className="input-group">
-                        <label htmlFor="password2" className={"input-desc"}>确认密码</label>
-                        <input id={"password2"} className={"input"} type="password" onChange={(event) => {
-                            this.setState({pwd2: event.target.value});
+                    <div class="form-group">
+                        <label htmlFor="pwd2" className={"input-desc"}>确认密码</label>
+                        <input id={"pwd2"} className={"form-control"} type="password" placeholder="请输入您的确认密码..." onChange={(event) => {
+                            this.setState({
+                                pwd2: event.target.value
+                            });
                         }}/>
+                        <small className="form-text text-muted">确认密码必须与密码一致</small>
                     </div>
                     <div className={"btn-wrap"}>
-                        <input type="button" value={"注册"} className={"button register-btn"}
+                        <input type="button" value={"注册"} className={"btn btn-primary register-btn"}
                                onClick={() => this._handleSubmit()}/>
                     </div>
                 </div>

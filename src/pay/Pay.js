@@ -9,39 +9,39 @@ class Pay extends React.Component {
         return (
             <div id="pay">
                 <div className={"main-no-bottom"}>
-                    <NavHeader backurl={"/"} title={"购买"}/>
-                    <div className={"budget"}>
-                        <img className={"budget__img"} src={budget} alt=""/>
-                        <div className="budget__img-mask"></div>
-                        <h4 className={"budget__title"}>三月活动标题</h4>
-                        <div className={"budget__content"}>这里是活动描述描述描述结交分额角附近熊金额而哦啊见覅偶按付金额哦就而佛积分</div>
-                    </div>
+                    <NavHeader backurl={"/"} title={"门票购买"}/>
+                    <h4 className={"pay-title"}>票务信息</h4>
+                    <p className={"pay-price"}>旺季门票 ￥110/人</p>
+                    <p className={"pay-price"}>淡季门票 ￥40/人</p>
+                    <p className={"pay-price"}>旺季观光车票 ￥90/人</p>
+                    <p className={"pay-price"}>淡季观光车票 ￥90/人</p>
+                    <p className={"pay-memo"}>
+                        注：1、景区实行流量控制，日接待量严格控制在2000人以内。景区将根据恢复重建实际情况，适时调整接待量，具体情况请及时关注公告；
+                    </p>
+                    <p className={"pay-memo"}>
+                        2、接待对象为旅行社组织的团队游客，且旅行社必须为游客购买意外保险；暂不接待散客，敬请谅解；
+                    </p>
+                    <p className={"pay-memo"}>
+                        3、特殊人群按照国家政策享受门票优惠或免票政策（不含观光车票）；
+                    </p>
+                    <p className={"pay-memo"}>
+                        4、为规范市场秩序，景区门、车票实行全网实名预约购买制。购票网为阿坝旅游网，网址： www.abatour.com。咨询服务电话：400-088-6969；
+                    </p>
                     <div className={"ticket-wrap clearfix"}>
                         <div className="left-ticket-wrap">
-                            <Link className={"btn-warning ticket full-ticket"} to={"#"}>
-                                <h5 className={"ticket__head"}>全票</h5>
-                                <p className={"ticket__desc"}>解恩爱得到额放军人家都的巨额偶的欧文觉得的奇偶位大家沃尔</p>
+                            <Link className={"btn-warning ticket full-ticket"} to={"/pay-info"}>
+                                全票
                             </Link>
                         </div>
                         <div className="right-ticket-wrap">
-                            <Link className={"btn-info ticket half-ticket"} to={"#"}>
-                                <h5 className={"ticket__head"}>半票</h5>
-                                <p className={"ticket__desc"}>解恩爱得到额放军人嗯嗯哒的家都的巨额偶的欧文觉得的奇偶位大家沃尔</p>
+                            <Link className={"btn-info ticket half-ticket"} to={"/pay-info"}>
+                                半票
                             </Link>
                         </div>
                         <div className="full-ticket-wrap">
-                            <Link className={"btn-success ticket group-ticket"} to={"#"}>
-                                <h5 className={"ticket__head"}>团体票</h5>
-                                <p className={"ticket__desc"}>解放军人家都的巨额偶的欧文觉得的奇偶位大家沃尔</p>
+                            <Link className={"btn-success ticket group-ticket"} to={"/pay-info"}>
+                                团体票
                             </Link>
-                        </div>
-                    </div>
-                    <div className="card border-secondary mb-3">
-                        <div className="card-header">友情提醒</div>
-                        <div className="card-body">
-                            <p className="card-text">1.阶级偶尔金佛手机覅附色粉色件四我放假偶尔飞机</p>
-                            <p className="card-text">2.阶金佛手机覅附件四我放假偶尔飞机</p>
-                            <p className="card-text">3.阶级偶尔金佛手机覅附偶尔飞机</p>
                         </div>
                     </div>
                 </div>

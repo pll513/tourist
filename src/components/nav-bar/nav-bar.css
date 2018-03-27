@@ -10,7 +10,7 @@
   width: 33.3333%;
 }
 .nav-bar__nav-item.active .nav-bar__nav-item_txt {
-  color: #9954BB;
+  color: #73c3b2;
 }
 .nav-bar__nav-item.active .nav-bar__nav-item_txt:after {
   content: "";
@@ -22,7 +22,7 @@
   display: block;
   width: 80%;
   height: 4px;
-  background: #9954BB;
+  background: #73c3b2;
 }
 .nav-bar__nav-item_txt {
   position: relative;

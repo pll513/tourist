@@ -20,6 +20,7 @@ class NavHeader extends React.Component {
                 <div className="nav-header__title">
                     {title}
                 </div>
+                {this.props.children}
             </div>
         );
     }

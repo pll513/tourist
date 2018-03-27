@@ -1,0 +1,14 @@
+#pay-info .main-no-bottom {
+  padding: 15px;
+}
+#pay-info .pay-info__title {
+  color: #152248;
+  text-align: center;
+  font-size: 24px;
+}
+#pay-info .pay-info__para {
+  color: #656a7b;
+  text-align: justify;
+  text-indent: 2em;
+  font-size: 17px;
+}

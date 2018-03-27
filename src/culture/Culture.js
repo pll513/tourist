@@ -37,6 +37,12 @@ class Culture extends React.Component {
                     dataList1: data,
                 });
             })
+        }).catch((err) => {
+            console.log(err);
+            this.setState({
+                dataLoaded: true,
+                dataList1: [],
+            });
         });
     }
     
@@ -63,6 +69,12 @@ class Culture extends React.Component {
                         dataList1: data,
                     });
                 })
+            }).catch((err) => {
+                console.log(err);
+                this.setState({
+                    dataLoaded: true,
+                    dataList1: [],
+                });
             });
         } else if (newPos === 1) {
             fetch(BASE_URL + '/tibet', {
@@ -78,6 +90,12 @@ class Culture extends React.Component {
                         dataList2: data,
                     });
                 })
+            }).catch((err) => {
+                console.log(err);
+                this.setState({
+                    dataLoaded: true,
+                    dataList2: [],
+                });
             });
         } else if (newPos === 2) {
             fetch(BASE_URL + '/red_classics', {
@@ -93,6 +111,12 @@ class Culture extends React.Component {
                         dataList3: data,
                     });
                 })
+            }).catch((err) => {
+                console.log(err);
+                this.setState({
+                    dataLoaded: true,
+                    dataList3: [],
+                });
             });
         }
         

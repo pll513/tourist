@@ -60,8 +60,10 @@ class CultureDetail extends React.Component {
             <div id="culture-detail">
                 <NavHeader backurl={"/culture"} title={"文化"}/>
                 <div className={"main-no-bottom"}>
-                    <h3 className={"article-title"}>{culture.name}</h3>
-                    {articleHtml}
+                    <div className="content-wrap">
+                        <h3 className={"article-title"}>{culture.name}</h3>
+                        {articleHtml}
+                    </div>
                 </div>
             </div>
         );

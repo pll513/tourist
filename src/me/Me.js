@@ -57,7 +57,7 @@ class Me extends React.Component {
                             this.setState({
                                redirect: true
                             });
-                        }}>注销</button>
+                        }}>退出登录</button>
                     </div>
                 </div>
                 <NavBottom pos={2}/>

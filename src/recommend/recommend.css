@@ -1,54 +1,83 @@
+#recommend .main-no-bottom {
+  background: #151f3f;
+  padding: 130px 0 10px;
+}
+#recommend .input-group {
+  position: fixed;
+  z-index: 10;
+  top: 76px;
+}
 #recommend .form-group {
   margin: 0;
 }
 #recommend .form-group .input-group {
   margin: 0;
 }
+#recommend .form-control {
+  height: 40px;
+  border: 0;
+}
+#recommend .form-control:active {
+  box-shadow: none;
+}
+#recommend .input-group-text {
+  display: inline-block;
+  padding: 0;
+  text-align: center;
+  width: 60px;
+  height: 40px;
+  background: #279fba;
+  border: 0;
+  color: #fff;
+}
 #recommend .category {
-  margin: 10px 20px;
+  z-index: 10;
+  position: fixed;
+  top: 116px;
+  width: 100%;
+  background: #151f3f;
+  text-align: center;
 }
 #recommend .category-item-wrap {
-  float: left;
-  width: 25%;
+  display: inline-block;
+  margin: 10px;
 }
 #recommend .category-item {
   display: block;
   border-radius: 999px;
-  margin: 10%;
-  width: 72px;
-  height: 72px;
-  line-height: 72px;
+  width: 66px;
+  height: 66px;
+  line-height: 66px;
   text-align: center;
   color: #fff;
-  font-size: 24px;
+  font-size: 22px;
 }
 #recommend .category-item.hotel {
-  background: #F39C12;
-  opacity: 0.6;
+  background: #ee7933;
 }
 #recommend .category-item.food {
-  background: #E74C3C;
-  opacity: 0.6;
+  background: #ef4a44;
 }
 #recommend .category-item.show {
-  background: #18BC9C;
-  opacity: 0.6;
+  background: #73c3b2;
 }
 #recommend .category-item.activity {
-  background: #3498DB;
-  opacity: 0.6;
+  background: #704c6a;
 }
 #recommend .recommend-list {
-  margin: 10px 20px;
+  height: 100%;
+  padding: 0 10px 10px;
 }
 #recommend .recommend-item {
   position: relative;
+  padding: 10px;
   display: block;
-  height: 160px;
-  border-radius: 6px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  background: #fff;
 }
 #recommend .recommend-item + .recommend-item {
-  margin-top: 8px;
+  margin-top: 12px;
 }
 #recommend .recommend-item__img-mask {
   z-index: 1;
@@ -58,33 +87,21 @@
   height: 100%;
   width: 100%;
   background: rgba(60, 60, 60, 0.3);
-  border-radius: 6px;
+  border-radius: 4px;
 }
 #recommend .recommend-item__img {
-  z-index: 0;
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
   width: 100%;
   object-fit: cover;
+  -webkit-border-radius: 6px;
   border-radius: 6px;
 }
 #recommend .recommend-item__title {
+  margin: 8px 2px;
   z-index: 9;
-  position: absolute;
-  top: 10px;
-  left: 5%;
-  width: 90%;
-  color: #fff;
+  color: #152248;
   font-size: 20px;
 }
 #recommend .recommend-item__desc {
-  top: 40px;
-  z-index: 9;
-  left: 5%;
-  width: 90%;
-  position: absolute;
-  color: #f7f7f7;
+  color: #656a7b;
   font-size: 15px;
 }

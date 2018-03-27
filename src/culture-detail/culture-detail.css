@@ -1,21 +1,32 @@
 #culture-detail .main-no-bottom {
-  padding: 10px 20px;
+  padding: 0 0 20px;
+  background: #73c3b2;
+}
+#culture-detail .content-wrap {
+  margin: 10px 15px;
+  padding: 12px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  background: #fff;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.2);
 }
 #culture-detail .article-title {
   margin: 12px 0;
-  font-size: 24px;
-  font-weight: 700;
   text-align: center;
-  color: #111;
+  font-size: 24px;
+  color: #152248;
 }
 #culture-detail .article-para {
   margin: 12px 0;
   font-size: 18px;
-  line-height: 20px;
+  line-height: 22px;
   text-indent: 2em;
   text-align: justify;
-  color: #222;
+  color: #656a7b;
 }
 #culture-detail .article-img {
   width: 100%;
+  object-fit: cover;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
 }

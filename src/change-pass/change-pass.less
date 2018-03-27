@@ -1,22 +1,31 @@
 @input-line-height: 30px;
 
 #change-pass {
-  .bg-grey {
-    background: #f6f6f6;
+  .main-no-bottom {
+    padding: 20px 15px;
   }
-  .input-group {
-    border-bottom: 1px solid #ddd;
-    margin: 14px 40px;
-    padding: 10px 0;
-    &:first-child {
-      margin-top: 40px;
+  .bg-grey {
+    background: #f5f6f7;
+  }
+  .form-control {
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    height: 40px;
+    &:focus {
+      outline: 0;
+      box-shadow: none;
+      border-color: #01a3d1;
     }
   }
+  .form-control:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #fff inset;
+  }
   .input-desc {
-    height: @input-line-height;
-    line-height: @input-line-height;
-    font-size: 18px;
-    color: #111;
+    height: 28px;
+    line-height: 28px;
+    font-size: 17px;
+    color: #444;
+    margin-bottom: 4px;
   }
   .input {
     float: right;
@@ -26,11 +35,16 @@
     background: transparent;
   }
   .btn-wrap {
-    margin: 20px 40px;
+    margin: 20px 0;
   }
   .change-btn {
     width: 100%;
     font-size: 20px;
+    background: #01a3d1;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    border: 0;
+    color: #fff;
   }
   input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 1000px #f6f6f6 inset;

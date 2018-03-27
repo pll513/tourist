@@ -15,10 +15,10 @@
   color: #9a9a9a;
 }
 .nav-bottom__nav-item.active .nav-bottom__nav-item_img:before {
-  color: #947bff;
+  color: #017494;
 }
 .nav-bottom__nav-item.active .nav-bottom__nav-item_txt {
-  color: #947bff;
+  color: #017494;
 }
 .nav-bottom__nav-item_img:before {
   font-size: 24px;

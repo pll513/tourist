@@ -35,26 +35,30 @@ class ChangePass extends React.Component {
     _handleSubmit() {
         let {oldpwd, newpwd1} = this.state;
         fetch(BASE_URL + '/users', {
-            method: 'POST',
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'token ' + loadToken()
+                'Authorization': 'Basic ' + window.btoa(loadToken() + ':unused'),
             },
             body: JSON.stringify({
-                oldpwd: oldpwd,
-                newpwd1: newpwd1,
+                old_password: oldpwd,
+                new_password: newpwd1,
             })
-        }).then((data) => {
-            console.log(data);
-            
-            toastIt('修改成功', 2000);
-            setTimeout(() => {
-                this.setState({
-                    redirect: true,
-                    from: '/login'
-                });
-            }, 2000);
-            
+        }).then((res) => {
+            return res.json().then((data) => {
+                console.log(data);
+                return;
+                if (data.phone) {
+                    toastIt('密码修改成功', 1500);
+                    setTimeout(() => {
+                        this.setState({
+                            redirect: true,
+                            from: '/login'
+                        });
+                    }, 2000);
+                    
+                }
+            })
         })
     }
     
@@ -78,32 +82,37 @@ class ChangePass extends React.Component {
                 <div className={"bg-grey"}></div>
                 <NavHeader backurl={"/me"} title={"修改密码"}/>
                 <div className="main-no-bottom">
-                    <div className="input-group">
+                    <div className="form-group">
                         <label htmlFor="oldpwd" className={"input-desc"}>旧密码</label>
-                        <input id="oldpwd" className={"input"} type="password" onChange={(event) => {
-                            this.setState({
-                                oldpwd: event.target.value
-                            });
-                        }}/>
+                        <input id={"oldpwd"} className={"form-control"} type="password" placeholder="请输入原来的密码..."
+                               onChange={(event) => {
+                                   this.setState({
+                                       oldpwd: event.target.value
+                                   });
+                               }}/>
                     </div>
-                    <div className="input-group">
-                        <label htmlFor="newpwd1" className={"input-desc"}>新密码</label>
-                        <input id="newpwd1" className={"input"} type="password" onChange={(event) => {
-                            this.setState({
-                                newpwd1: event.target.value
-                            });
-                        }}/>
+                    <div className="form-group">
+                        <label htmlFor="pwd1" className={"input-desc"}>密码</label>
+                        <input id={"pwd1"} className={"form-control"} type="password" placeholder="请输入新密码..."
+                               onChange={(event) => {
+                                   this.setState({
+                                       newpwd1: event.target.value
+                                   });
+                               }}/>
+                        <small className="form-text text-muted">密码为6到20位的数字字母或者字符</small>
                     </div>
-                    <div className="input-group">
-                        <label htmlFor="newpwd2" className={"input-desc"}>确认密码</label>
-                        <input id={"newpwd2"} className={"input"} type="password" onChange={(event) => {
-                            this.setState({
-                                newpwd2: event.target.value
-                            });
-                        }}/>
+                    <div class="form-group">
+                        <label htmlFor="pwd2" className={"input-desc"}>确认密码</label>
+                        <input id={"pwd2"} className={"form-control"} type="password" placeholder="请输入确认密码..."
+                               onChange={(event) => {
+                                   this.setState({
+                                       newpwd2: event.target.value
+                                   });
+                               }}/>
+                        <small className="form-text text-muted">确认密码必须与密码一致</small>
                     </div>
                     <div className={"btn-wrap"}>
-                        <input type="button" value={"确认修改"} className={"button change-btn"}
+                        <input type="button" value={"确认修改"} className={"btn change-btn"}
                                onClick={() => this._handleSubmit()}/>
                     </div>
                 </div>

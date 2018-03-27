@@ -21,19 +21,19 @@
       width: 100%;
     }
   }
-
   .nav-pages__content {
     z-index: 0;
-    //bottom: 76px;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    padding: 0 10px;
     overflow: scroll;
   }
 
   .nav-pages__page {
     width: 100%;
+    padding-bottom: 8px;
   }
 
   .nav-page__list-item {
@@ -41,9 +41,9 @@
     padding: 10px 10px;
     background: #fff;
     margin-top: 8px;
-    //& + .nav-page__list-item {
-    //  margin-top: 8px;
-    //}
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
   }
 
   .nav-page__list-item-content {
@@ -77,7 +77,7 @@
 
   .sight-item__img {
     width: 100%;
-    height: 90px;
+    height: 110px;
     object-fit: cover;
     -webkit-border-radius: 6px;
     border-radius: 6px;
@@ -87,8 +87,9 @@
     margin-top: 4px;
     height: 30px;
     line-height: 30px;
-    font-size: 15px;
-    color: #121212;
+    font-size: 16px;
+    color: #656a7b;
+    text-align: center;
   }
 
   .sight-item__desc {
@@ -99,7 +100,7 @@
     overflow:hidden;
     width: 100%;
     font-size: 13px;
-    color: #777;
+    color: #787878;
   }
 
   .route__name {

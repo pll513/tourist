@@ -1,31 +1,37 @@
+#register .main-no-bottom {
+  padding: 20px 15px;
+}
 #register .bg-grey {
-  background: #f6f6f6;
-}
-#register .input-group {
-  border-bottom: 1px solid #ddd;
-  margin: 14px 40px;
-  padding: 10px 0;
-}
-#register .input-group:first-child {
-  margin-top: 40px;
+  background: #f5f6f7;
 }
 #register .input-desc {
-  height: 30px;
-  line-height: 30px;
-  font-size: 18px;
-  color: #111;
+  height: 28px;
+  line-height: 28px;
+  font-size: 17px;
+  color: #444;
+  margin-bottom: 4px;
 }
-#register .input {
-  float: right;
-  border: 0;
-  width: 65%;
-  height: 30px;
-  background: transparent;
+#register .form-control {
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  height: 40px;
+}
+#register .form-control:focus {
+  outline: 0;
+  box-shadow: none;
+  border-color: #01a3d1;
+}
+#register .form-control:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #fff inset;
 }
 #register .btn-wrap {
-  margin: 20px 40px;
+  margin: 20px 0;
 }
 #register .register-btn {
   width: 100%;
   font-size: 20px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  background: #01a3d1;
+  border: 0;
 }

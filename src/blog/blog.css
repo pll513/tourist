@@ -1,5 +1,13 @@
+#blog .icon-camera {
+  z-index: 10;
+  position: absolute;
+  right: 20px;
+  bottom: 26px;
+  height: 32px;
+}
 #blog .icon-camera:before {
-  font-size: 28px;
+  font-size: 32px;
+  color: #fff;
 }
 #blog .photo-form-bg {
   z-index: 10;

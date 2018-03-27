@@ -31,7 +31,7 @@ class Blog extends React.Component {
         fetch(BASE_URL + '/find', {
             method: 'GET',
             headers: {
-                'Authorization': 'Basic ' + window.btoa('18428359569:224930'),
+                'Authorization': 'Basic ' + window.btoa(loadToken() + ':unused'),
                 'Accept': 'application/json'
             }
         }).then((res) => {
@@ -166,13 +166,11 @@ class Blog extends React.Component {
         let {showImgViewer, imgUrl, showPhotoForm, postsLoaded, posts, formImgs} = this.state;
         return (
             <div id="blog">
-                <NavHeader backurl={"/"} title={"发现"}/>
-                <i className="iconfont icon-camera"
-                   style={{zIndex: 9, position: 'fixed', right: '20px', top: '28px', color: '#444'}} onClick={() => {
+                <NavHeader backurl={"/"} title={"发现"}><i className="iconfont icon-camera" onClick={() => {
                     this._handleCameraClick();
-                }}/>
+                }}/></NavHeader>
                 <form method={"POST"} id={"photo-form"} className={showPhotoForm ? "photo-form" : "none photo-form"}
-                      enctype="multipart/form-data">
+                      encType="multipart/form-data">
                     <textarea type="text" className="photo-form-input" placeholder="请输入..." onChange={(event) => {
                         this.setState({content: event.target.value});
                     }}/>
@@ -229,20 +227,19 @@ class Blog extends React.Component {
                             fetch(BASE_URL + '/find', {
                                 method: 'POST',
                                 headers: {
-                                    'Authorization': 'Basic ' + window.btoa('18428359569:224930'),
+                                    'Authorization': 'Basic ' + window.btoa(loadToken() + ':unused'),
                                     'Accept': 'application/json',
                                     'Content-Type': 'application/json'
                                 },
                                 body: JSON.stringify(data)
                             }).then((res) => {
-                                console.log(data);
                                 return res.json().then((data) => {
                                     console.log(data);
                                     // 如果成功了
                                     fetch(BASE_URL + '/find', {
                                         method: 'GET',
                                         headers: {
-                                            'Authorization': 'Basic ' + window.btoa('18428359569:224930'),
+                                            'Authorization': 'Basic ' + window.btoa(loadToken() + ':unused'),
                                             'Accept': 'application/json'
                                         }
                                     }).then((res) => {
@@ -306,7 +303,7 @@ class Blog extends React.Component {
                                                 fetch(BASE_URL + '/like/' + post._id, {
                                                     method: 'PUT',
                                                     headers: {
-                                                        'Authorization': 'Basic ' + window.btoa('18428359569:224930'),
+                                                        'Authorization': 'Basic ' + window.btoa(loadToken() + ':unused'),
                                                         'Accept': 'application/json'
                                                     }
                                                 }).then((res) => {

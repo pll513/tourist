@@ -1,50 +1,26 @@
 #pay .main-no-bottom {
-  padding: 0 10px;
+  padding: 10px 15px;
 }
-#pay .budget {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 180px;
-}
-#pay .budget__img {
-  z-index: 0;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-}
-#pay .budget__img-mask {
-  position: absolute;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-  background: rgba(60, 60, 60, 0.3);
-}
-#pay .budget__title {
-  z-index: 9;
-  position: absolute;
-  width: 80%;
-  left: 10%;
-  top: 20px;
-  color: #fff;
+#pay .pay-title {
+  text-align: center;
   font-size: 24px;
+  color: #152248;
 }
-#pay .budget__content {
-  z-index: 9;
-  position: absolute;
-  left: 5%;
-  width: 90%;
-  top: 60px;
-  color: #f7f7f7;
-  font-size: 17px;
-  line-height: 18px;
+#pay .pay-price {
+  margin: 4px 0;
+  font-size: 16px;
+  line-height: 22px;
+  color: #656a7b;
+}
+#pay .pay-memo {
+  margin: 8px 0;
+  font-size: 16px;
+  line-height: 22px;
+  color: #656a7b;
+  text-align: justify;
 }
 #pay .ticket-wrap {
-  margin-top: 192px;
+  margin-top: 12px;
 }
 #pay .full-ticket-wrap {
   float: left;
@@ -63,9 +39,12 @@
 #pay .ticket {
   display: block;
   padding: 10px 0;
-  height: 100px;
+  height: 50px;
   width: 100%;
   border-radius: 4px;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
 }
 #pay .ticket__head {
   color: #fff;
@@ -75,32 +54,16 @@
   line-height: 24px;
   height: 24px;
 }
-#pay .ticket__desc {
-  color: #fff;
-  width: 80%;
-  margin-left: 10%;
-  font-size: 14px;
-  line-height: 16px;
-  text-align: justify;
-}
 #pay .full-ticket {
   width: 100%;
-  height: 120px;
+  background: #ee7933;
 }
 #pay .half-ticket {
   width: 100%;
-  height: 120px;
+  background: #279fba;
 }
 #pay .group-ticket {
   margin: 12px 0;
   width: 100%;
-}
-#pay .card {
-  margin: 0;
-}
-#pay .card-header {
-  padding: 6px;
-}
-#pay .card-text {
-  margin: 6px 0;
+  background: #73c3b2;
 }

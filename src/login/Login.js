@@ -7,7 +7,7 @@ import {BASE_URL} from '../config/network';
 import {saveToken} from '../utils/utils';
 import toastIt from 'toastit.js';
 
-class Register extends React.Component {
+class Login extends React.Component {
     
     constructor(props) {
         super(props);
@@ -57,31 +57,31 @@ class Register extends React.Component {
                 <div className={"bg-grey"}></div>
                 <NavHeader backurl={"/"} title={"登录"}/>
                 <div className="main-no-bottom">
-                    <div className="input-group">
-                        <label htmlFor="phone" className={"input-desc"}>手&nbsp;机&nbsp;号</label>
-                        <input id={"phone"} className={"input"} type="text" onChange={(event) => {
+                    <div className="form-group">
+                        <label htmlFor="phone" className={"input-desc"}>手机号</label>
+                        <input id={"phone"} className={"form-control"} type="text" placeholder="请输入您的手机号..." onChange={(event) => {
                             this.setState({
                                 phone: event.target.value
                             });
                         }}/>
                     </div>
-                    <div className="input-group">
-                        <label htmlFor="password" className={"input-desc"}>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码</label>
-                        <input id={"password1"} className={"input"} type="password" onChange={(event) => {
+                    <div className="form-group">
+                        <label htmlFor="pwd" className={"input-desc"}>密码</label>
+                        <input id={"pwd"} className={"form-control"} type="password" placeholder="请输入您的密码..." onChange={(event) => {
                             this.setState({
                                 pwd: event.target.value
                             });
                         }}/>
                     </div>
                     <div className={"btn-wrap"}>
-                        <input type="button" value={"登录"} className={"button login-btn"}
+                        <input type="button" value={"登录"} className={"btn btn-primary"}
                                onClick={() => this._handleSubmit()}/>
                     </div>
-                    <Link to={"/register"} className={"link-register"}>点击这里注册</Link>
+                    <Link to={"/register"} className={"link-register"}>如果您还没有账号，可以点击这里注册</Link>
                 </div>
             </div>
         );
     }
 }
 
-export default Register;
+export default Login;

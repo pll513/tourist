@@ -1,41 +1,46 @@
-#login .link-register {
-  display: block;
-  width: 200px;
-  text-align: center;
-  margin: auto;
-  font-size: 24px;
+#login .main-no-bottom {
+  padding: 20px 15px;
 }
 #login .bg-grey {
-  background: #f6f6f6;
-}
-#login .input-group {
-  border-bottom: 1px solid #ddd;
-  margin: 14px 40px;
-  padding: 10px 0;
-}
-#login .input-group:first-child {
-  margin-top: 40px;
+  background: #f5f6f7;
 }
 #login .input-desc {
-  height: 30px;
-  line-height: 30px;
-  font-size: 18px;
-  color: #111;
+  height: 28px;
+  line-height: 28px;
+  font-size: 17px;
+  color: #444;
+  margin-bottom: 4px;
 }
-#login .input {
-  float: right;
-  border: 0;
-  width: 65%;
-  height: 30px;
-  background: transparent;
+#login .form-control {
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  height: 40px;
+}
+#login .form-control:focus {
+  outline: 0;
+  box-shadow: none;
+  border-color: #01a3d1;
 }
 #login .btn-wrap {
-  margin: 20px 40px;
+  margin: 20px 0;
 }
-#login .login-btn {
+#login .btn-primary {
   width: 100%;
   font-size: 20px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  background: #01a3d1;
+  border: 0;
 }
-#login input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0px 1000px #f6f6f6 inset;
+#login .form-control:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #fff inset;
+}
+#login .link-register {
+  display: block;
+  width: 100%;
+  margin: 20px 0;
+  font-size: 16px;
+  text-decoration: underline;
+  text-align: center;
+  color: #01a3d1;
 }

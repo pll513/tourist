@@ -1,21 +1,47 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from 'react';
+import Home from './home/Home';
+import Culture from './culture/Culture';
+import CultureDetail from './culture-detail/CultureDetail';
+import Me from './me/Me';
+import ChangePass from './change-pass/ChangePass';
+import Register from './register/Register';
+import Login from './login/Login';
+import RoutePage from './route/Route';
+import Sight from './sight/Sight';
+import Blog from './blog/Blog';
+import Pay from './pay/Pay';
+import PayInfo from './pay-info/PayInfo';
+import Recommend from './recommend/Recommend';
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
+    
+    componentDidMount() {
+    
+    }
+    
+    render() {
+        return (
+            <BrowserRouter>
+                <Switch>
+                    <Route exact path='/' component={Home}/>
+                    <Route exact path='/culture' component={Culture}/>
+                    <Route exact path='/culture/detail' component={CultureDetail}/>
+                    <Route exact path='/me' component={Me}/>
+                    <Route exact path='/me/change-pass' component={ChangePass}/>
+                    <Route exact path='/register' component={Register}/>
+                    <Route exact path='/login' component={Login}/>
+                    <Route exact path='/route' component={RoutePage}/>
+                    <Route exact path='/sight' component={Sight}/>
+                    <Route exact path='/blog' component={Blog}/>
+                    <Route exact path="/pay" component={Pay}/>
+                    <Route exact path="/pay-info" component={PayInfo}/>
+                    <Route exact path="/recommend" component={Recommend}/>
+                
+                </Switch>
+            </BrowserRouter>
+        );
+    }
 }
 
 export default App;
