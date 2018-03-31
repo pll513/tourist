@@ -33,6 +33,7 @@ class Login extends React.Component {
             },
         }).then((res) => {
             res.json().then((data) => {
+                console.log(data);
                 if (data.token) {
                     toastIt('登录成功', 1500);
                     saveToken(data.token);
@@ -44,8 +45,13 @@ class Login extends React.Component {
                     this.setState({
                         timer: timer
                     });
+                } else {
+                    toastIt('登录失败 请检查您的手机和密码', 2000);
                 }
-            })
+            }).catch((err) => {
+                toastIt('登录失败 请检查您的手机和密码', 2000);
+                console.log(err);
+            });
         }).catch((err) => {
             toastIt('登录失败 请稍后重试', 2000);
             console.log(err);

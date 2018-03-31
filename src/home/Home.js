@@ -27,11 +27,13 @@ class Home extends React.Component {
             myLocation: {lng: 103.8823493651, lat: 33.2950658561},
             timer1: null,
             timer2: null,
+            yourPosition: true,
         };
         
     }
     
     componentDidMount() {
+        this._getLocation(true);
         fetch(BASE_URL + '/location', {
             method: 'GET',
             headers: {
@@ -50,7 +52,6 @@ class Home extends React.Component {
             console.log(err);
         });
         let timer = setInterval(() => {
-            console.log('获取坐标数组');
             // get positions
             fetch(BASE_URL + '/location', {
                 method: 'GET',
@@ -71,8 +72,8 @@ class Home extends React.Component {
             });
         }, 20000);
         
-        let timer2 = setInterval(()=> {
-            this._getLocation();
+        let timer2 = setInterval(() => {
+            this._getLocation(false);
         }, 20000);
         
         this.setState({
@@ -83,72 +84,42 @@ class Home extends React.Component {
     }
     
     componentWillUnmount() {
-        this.state.timer1 && clearInterval(this.state.timer1)
-        this.state.timer2 && clearInterval(this.state.timer2)
+        this.state.timer1 && clearInterval(this.state.timer1);
+        this.state.timer2 && clearInterval(this.state.timer2);
     }
     
-    _getLocation() {
-        let options = {
-            enableHighAccuracy: true, //boolean 是否要求高精度的地理信息，默认为false
-            maximumAge: 1000 //应用程序的缓存时间
-        };
-        
-        if (navigator.geolocation) {
-            //浏览器支持geolocation
-            navigator.geolocation.getCurrentPosition(this._onSuccess, this._onError, options);
-            
-        } else {
-            //浏览器不支持geolocation
-            console.log("浏览器不支持!");
-        }
-    }
-    
-    _onSuccess(position) {
-        //经度
-        let longitude = position.coords.longitude;
-        //纬度
-        let latitude = position.coords.latitude;
-        
-        console.log(longitude + ',' + latitude);
-        this.setState({
-            myLocation: {lng: longitude, lat: latitude},
-        });
-        fetch(BASE_URL + '/location', {
-            method: 'POST',
-            headers: {
-                'Authorization': 'Basic ' + window.btoa(loadToken() + ':unused'),
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            data: JSON.stringify({location: {lng: longitude, lat: latitude}})
-        }).then((res) => {
-            return res.json().then((data) => {
-                console.log(data);
-            })
-        }).catch((err) => {
-            console.log(err);
-        });
-        
-    }
-    
-    _onError(error) {
-        switch (error.code) {
-            // case error.PERMISSION_DENIED:
-            //     alert("用户拒绝对获取地理位置的请求");
-            //     break;
-            //
-            // case error.POSITION_UNAVAILABLE:
-            //     alert("位置信息是不可用的");
-            //     break;
-            //
-            // case error.TIMEOUT:
-            //     alert("请求用户地理位置超时");
-            //     break;
-            //
-            // case error.UNKNOWN_ERROR:
-            //     alert("未知错误");
-            //     break;
-        }
+    _getLocation(first) {
+        let geolocation = new window.BMap.Geolocation();
+        let that = this;
+        geolocation.getCurrentPosition(function (r) {
+            if (r.point) {
+                let lng = r.point.lng;
+                let lat = r.point.lat;
+                console.log(lng + ',' + lat);
+                that.setState({
+                    myLocation: {lng: lng, lat: lat},
+                    yourPosition: first
+                });
+                fetch(BASE_URL + '/location', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': 'Basic ' + window.btoa(loadToken() + ':unused'),
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    data: JSON.stringify({location: {lng: lng, lat: lat}})
+                }).then((res) => {
+                    return res.json().then((data) => {
+                        console.log(data);
+                    })
+                }).catch((err) => {
+                    console.log(err);
+                });
+            }
+            else {
+                console.log('failed to get address in page home');
+            }
+        }, {enableHighAccuracy: true})
     }
     
     render() {
@@ -164,7 +135,7 @@ class Home extends React.Component {
                         })}
                         <NavigationControl/>
                         <Marker position={this.state.myLocation} icon={"loc_blue"}/>
-                        <InfoWindow position={this.state.myLocation} text="你的位置"/>
+                        {this.state.yourPosition ? <InfoWindow position={this.state.myLocation} text="你的位置"/> : null}
                     </Map>
                 </div>
                 {/*<Link className="home-link problem" to={"#"}>常见问题</Link>*/}

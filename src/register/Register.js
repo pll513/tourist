@@ -80,16 +80,23 @@ class Register extends React.Component {
             return res.json().then((data) => {
                 console.log(data);
                 if (data.phone) {
-                    toastIt('注册成功', 1000);
+                    toastIt('注册成功', 1500);
                     setTimeout(() => {
                         this.setState({
                             redirect: true
                         });
-                    }, 1500);
-                    
+                    }, 2000);
+                } else {
+                    toastIt('注册失败 请检查输入', 2000);
                 }
-            })
-        })
+            }).catch((err) => {
+                toastIt('注册失败 请检查输入', 2000);
+                console.log(err);
+            });
+        }).catch((err) => {
+            toastIt('注册失败 请稍后重试', 2000);
+            console.log(err);
+        });
     }
     
     render() {

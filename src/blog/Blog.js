@@ -52,62 +52,25 @@ class Blog extends React.Component {
     }
     
     _getLocation() {
-        let options = {
-            enableHighAccuracy: true, //boolean 是否要求高精度的地理信息，默认为false
-            maximumAge: 1000 //应用程序的缓存时间
-        };
-        
-        if (navigator.geolocation) {
-            //浏览器支持geolocation
-            navigator.geolocation.getCurrentPosition(this._onSuccess, this._onError, options);
-            
-        } else {
-            //浏览器不支持geolocation
-            console.log("浏览器不支持!");
-        }
-    }
-    
-    _onSuccess(position) {
-        let BMap = window.BMap;
-        //返回用户位置
-        //经度
-        let longitude = position.coords.longitude;
-        //纬度
-        let latitude = position.coords.latitude;
-        
-        console.log(longitude + ' ' + latitude);
-        
-        let geoc = new BMap.Geocoder();
-        geoc.getLocation(new BMap.Point(longitude, latitude), function (rs) {
-            console.log(rs);
-            this.setState({
-                address: rs.address
-            });
-        });
-    }
-    
-    _onError(error) {
-        // switch (error.code) {
-        //     case error.PERMISSION_DENIED:
-        //         alert("用户拒绝对获取地理位置的请求");
-        //         break;
-        //
-        //     case error.POSITION_UNAVAILABLE:
-        //         alert("位置信息是不可用的");
-        //         break;
-        //
-        //     case error.TIMEOUT:
-        //         alert("请求用户地理位置超时");
-        //         break;
-        //
-        //     case error.UNKNOWN_ERROR:
-        //         alert("未知错误");
-        //         break;
-        // }
+        let bmap = window.BMap;
+        let geolocation = new bmap.Geolocation();
+        let geoc = new bmap.Geocoder();
+        let that = this;
+        geolocation.getCurrentPosition(function (r) {
+            if (r.point) {
+                geoc.getLocation(r.point, (rs) => {
+                    console.log(rs);
+                    that.setState({
+                        address: rs.address
+                    });
+                });
+            } else {
+                console.log('failed to get address in page blog');
+            }
+        }, {enableHighAccuracy: true});
     }
     
     _handleCameraClick() {
-        let BMap = window.BMap;
         if (!this.state.showPhotoForm) {
             // 如果刚刚展开
             this._getLocation();
@@ -138,6 +101,8 @@ class Blog extends React.Component {
                     sight: data
                 });
             })
+        }).catch((err) => {
+            console.log(err);
         });
     }
     
@@ -187,7 +152,6 @@ class Blog extends React.Component {
                                 return;
                             }
                             let formData = new FormData(document.getElementById('photo-form'));
-                            console.log(loadToken());
                             fetch(BASE_URL + '/uploads', {
                                 method: 'POST',
                                 headers: {
@@ -202,7 +166,9 @@ class Blog extends React.Component {
                                         formImgs: data
                                     });
                                 })
-                            })
+                            }).catch((err) => {
+                                console.log(err);
+                            });
                             
                         }}/>
                     </div>
@@ -217,7 +183,6 @@ class Blog extends React.Component {
                                 content: this.state.content,
                                 location: this.state.address
                             };
-                            console.log(data);
                             fetch(BASE_URL + '/find', {
                                 method: 'POST',
                                 headers: {
