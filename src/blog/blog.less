@@ -61,12 +61,16 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
   }
   .btn-add-img {
     box-sizing: border-box;
     position: relative;
     float: left;
     border: 1px solid #ccc;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
     width: 24%;
     margin: 8px 0.5%;
     &:before {
@@ -77,7 +81,7 @@
   }
   .icon-add {
     position: absolute;
-    top: 0;
+    top: -14px;
     right: 0;
     bottom: 0;
     left: 0;
@@ -94,7 +98,8 @@
 
   .photo-form__location-title {
     font-size: 16px;
-    color: #222;
+    color: #333;
+    margin-right: 6px;
   }
 
   .photo-form__location-value {
@@ -103,20 +108,22 @@
   }
 
   .btn-wrap {
-    padding: 8px 0;
+    padding: 12px 0 4px;
   }
   .btn-submit {
+    padding-left: 0;
     border: 0;
     font-size: 20px;
-    color: @color-info;
+    color: #01a3d1;
     background: transparent;
     font-weight: 400;
   }
   .btn-cancel {
+    padding-right: 0;
     float: right;
     border: 0;
     font-size: 20px;
-    color: @color-danger;
+    color: #ef4a44;
     background: transparent;
     font-weight: 400;
   }

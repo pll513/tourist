@@ -3,13 +3,13 @@ import NavHeader from '../components/nav-header/NavHeader';
 import NavBottom from '../components/nav-bottom/NavBottom';
 import {Link, Redirect} from 'react-router-dom';
 import {loadToken} from '../utils/utils';
+import {BASE_URL} from '../config/network';
 import "./me.css"
 
 class Me extends React.Component {
     
     constructor(props) {
         super(props);
-        
     }
     
     render() {
@@ -53,9 +53,27 @@ class Me extends React.Component {
                     </ul>
                     <div className={"logout-wrap"}>
                         <button className={"btn-logout btn btn-danger"} onClick={() => {
-                            localStorage.removeItem('token');
-                            this.setState({
-                               redirect: true
+                            // logout
+                            fetch(BASE_URL + '/log_out', {
+                                method: 'GET',
+                                headers: {
+                                    'Authorization': 'Basic ' + window.btoa(loadToken() + ':unused'),
+                                    'Accept': 'application/json'
+                                }
+                            }).then((res) => {
+                                return res.json().then((data) => {
+                                    console.log(data);
+                                    localStorage.removeItem('token');
+                                    this.setState({
+                                        redirect: true
+                                    });
+                                })
+                            }).catch((err) => {
+                                console.log(err);
+                                localStorage.removeItem('token');
+                                this.setState({
+                                    redirect: true
+                                });
                             });
                         }}>退出登录</button>
                     </div>

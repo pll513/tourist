@@ -3,7 +3,6 @@ import NavHeader from '../components/nav-header/NavHeader';
 import './route.css';
 import {Link} from 'react-router-dom';
 import {BASE_URL} from '../config/network';
-import banner from '../imgs/slider1.jpg';
 
 
 class Route extends React.Component {
@@ -36,78 +35,6 @@ class Route extends React.Component {
                 });
             })
         });
-
-        // console.log('22222222');
-        // let data = {
-        //     sights: [
-        //         {
-        //             sight_id: '111',
-        //             name:'namenamename1',
-        //             des: {
-        //                 introduction: 'introduction introduction introduction introduction introduction'
-        //             }
-        //         },
-        //         {
-        //             sight_id: '222',
-        //             name:'namenamename2',
-        //             des: {
-        //                 introduction: 'introduction introduction introduction introduction introduction'
-        //             }
-        //         },
-        //         {
-        //             sight_id: '333',
-        //             name:'namenamename3',
-        //             des: {
-        //                 introduction: 'introduction introduction introduction introduction introduction'
-        //             }
-        //         },
-        //         {
-        //             sight_id: '444',
-        //             name:'namenamename4',
-        //             des: {
-        //                 introduction: 'introduction introduction introduction introduction introduction'
-        //             }
-        //         }
-        //     ],
-        //     distance: ['1公里', '2公里', '3公里']
-        // };
-
-        // this.setState({
-        //     routeLoaded: true,
-        //     route: data.sights,
-        //     distances: data.distance
-        // });
-        
-        // this.setState({
-        //     routeLoaded: true,
-        //     route: [{
-        //         id: 1,
-        //         name: '景点名1',
-        //         desc: '颜色非常的绚丽，空气十分的清新，而且感觉真是大自然的鬼斧神工。到处都是美丽的风景，最美的地方了。',
-        //         img: banner
-        //     }, {
-        //         id: 2,
-        //         name: '景点名1',
-        //         desc: '颜色非常的绚丽，空气十分的清新，而且感觉真是大自然的鬼斧神工。到处都是美丽的风景，最美的地方了。',
-        //         img: banner
-        //     }, {
-        //         id: 3,
-        //         name: '景点名1',
-        //         desc: '颜色非常的绚丽，空气十分的清新，而且感觉真是大自然的鬼斧神工。到处都是美丽的风景，最美的地方了。',
-        //         img: banner
-        //     }, {
-        //         id: 4,
-        //         name: '景点名1',
-        //         desc: '颜色非常的绚丽，空气十分的清新，而且感觉真是大自然的鬼斧神工。到处都是美丽的风景，最美的地方了。',
-        //         img: banner
-        //     }, {
-        //         id: 5,
-        //         name: '景点名1',
-        //         desc: '颜色非常的绚丽，空气十分的清新，而且感觉真是大自然的鬼斧神工。到处都是美丽的风景，最美的地方了。',
-        //         img: banner
-        //     }],
-        //     distances: [500, 1000, 2000, 600],
-        // });
     }
     
     render() {
@@ -124,6 +51,7 @@ class Route extends React.Component {
             routeHtml.push(
                 <div className="route-item" key={jIndex}>
                     <h4 className={"route-item__title"}>{sight.name}</h4>
+                    <img className={"route-item__img"} src={sight.photo} alt=""/>
                     <p className={"route-item__text"}>{sight.des.introduction}</p>
                     <div style={{textAlign: 'right'}}>
                         <Link className={"route-item__more"} to={{

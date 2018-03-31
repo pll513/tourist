@@ -35,6 +35,9 @@ textarea {
 .none {
   display: none;
 }
+.btn:active {
+  box-shadow: none !important;
+}
 .clearfix:before,
 .clearfix:after {
   display: table;

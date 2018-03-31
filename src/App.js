@@ -13,6 +13,7 @@ import Pay from './pay/Pay';
 import PayInfo from './pay-info/PayInfo';
 import Recommend from './recommend/Recommend';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
+// import BMap from "bmap";
 
 class App extends Component {
     

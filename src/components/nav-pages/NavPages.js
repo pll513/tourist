@@ -3,7 +3,7 @@ import NavBar from '../nav-bar/NavBar';
 import {Link} from 'react-router-dom';
 import {BASE_URL} from '../../config/network';
 import "whatwg-fetch";
-import {Map, Circle, Marker, MarkerList, Polyline, NavigationControl} from 'react-bmap'
+import {Map, Circle, Marker, MarkerList, Polyline, NavigationControl} from 'react-bmap';
 import './nav-pages.css';
 import img1 from '../../imgs/slider2.jpg';
 
@@ -65,24 +65,6 @@ class NavPages extends React.Component {
                 routes: []
             });
         });
-
-        // get positions
-        fetch(BASE_URL + '/locations', {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json'
-            }
-        }).then((res) => {
-            return res.json().then((data) => {
-                console.log(data);
-                data = data || [];
-                this.setState({
-                    positions: data,
-                });
-            })
-        }).catch((err) => {
-            console.log(err);
-        });
         
     }
     
@@ -98,7 +80,7 @@ class NavPages extends React.Component {
         if (sightsLoaded && routesLoaded) {
             navPageHtml = (
                 <div className="nav-pages">
-                    <NavBar txts={['必游美景', '推荐路线', '地理位置']} pos={pos}
+                    <NavBar txts={['必游美景', '推荐路线', '为您服务']} pos={pos}
                             updatePosition={(newPos) => this._updatePosition(newPos)}/>
                     <div className="nav-pages__content">
                         <div className={"nav-pages__page sights" + (pos === 0 ? '' : ' none')}>
@@ -147,16 +129,12 @@ class NavPages extends React.Component {
                             })}
                         </div>
                         <div className={"nav-pages__page" + (pos === 2 ? '' : ' none')}>
-                            <Map center={{lng: 103.8823493651, lat: 33.2950658561}} zoom={11}>
-                                <Marker position={{lng: 103.8823493651, lat: 33.2950658561}} />
-                                <NavigationControl />
-                                <Circle
-                                    center={{lng: 103.8823493651, lat: 33.2950658561}}
-                                    fillColor='blue'
-                                    strokeColor='white'
-                                    radius="300"
-                                />
-                            </Map>
+                            <div className={"service-btn-wrap"}>
+                                <Link className={"btn service-link recommend"} to={"/recommend"}>为你优选</Link>
+                                <Link className={"btn service-link pay"} to={"/pay"}>购票服务</Link>
+                                <Link className={"btn service-link contact"} to={"#"}>联系我们</Link>
+                                <Link className={"btn service-link problem"} to={"#"}>常见问题</Link>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -164,7 +142,7 @@ class NavPages extends React.Component {
         } else {
             navPageHtml = (
                 <div className="nav-pages">
-                    <NavBar txts={['必游美景', '推荐路线', '地理位置']} pos={pos}
+                    <NavBar txts={['必游美景', '推荐路线', '为您服务']} pos={pos}
                             updatePosition={(newPos) => this._updatePosition(newPos)}/>
                     <div className="nav-pages__content">
 

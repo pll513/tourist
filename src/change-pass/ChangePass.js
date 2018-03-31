@@ -34,7 +34,7 @@ class ChangePass extends React.Component {
     
     _handleSubmit() {
         let {oldpwd, newpwd1} = this.state;
-        fetch(BASE_URL + '/users', {
+        fetch(BASE_URL + '/password', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -47,10 +47,10 @@ class ChangePass extends React.Component {
         }).then((res) => {
             return res.json().then((data) => {
                 console.log(data);
-                return;
-                if (data.phone) {
+                if (data) {
                     toastIt('密码修改成功', 1500);
                     setTimeout(() => {
+                        localStorage.removeItem('token');
                         this.setState({
                             redirect: true,
                             from: '/login'
@@ -59,7 +59,10 @@ class ChangePass extends React.Component {
                     
                 }
             })
-        })
+        }).catch((err) => {
+            console.log(err);
+            toastIt('密码修改失败 请稍后重试', 2000);
+        });
     }
     
     render() {

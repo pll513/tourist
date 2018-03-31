@@ -15,6 +15,7 @@ class Login extends React.Component {
             phone: '',
             pwd: '',
             redirect: false,
+            timer: null,
         };
     }
     
@@ -31,16 +32,29 @@ class Login extends React.Component {
                 'Authorization': 'Basic ' + window.btoa(phone + ':' + pwd)
             },
         }).then((res) => {
-            res.json().then((data)=> {
+            res.json().then((data) => {
                 if (data.token) {
+                    toastIt('登录成功', 1500);
                     saveToken(data.token);
+                    let timer = setTimeout(() => {
+                        this.setState({
+                            redirect: true
+                        })
+                    }, 2000);
                     this.setState({
-                        redirect: true
+                        timer: timer
                     });
                 }
             })
-        })
+        }).catch((err) => {
+            toastIt('登录失败 请稍后重试', 2000);
+            console.log(err);
+        });
         
+    }
+    
+    componentWillUnmount() {
+        this.state.timer && clearTimeout(this.state.timer)
     }
     
     render() {
@@ -59,19 +73,21 @@ class Login extends React.Component {
                 <div className="main-no-bottom">
                     <div className="form-group">
                         <label htmlFor="phone" className={"input-desc"}>手机号</label>
-                        <input id={"phone"} className={"form-control"} type="text" placeholder="请输入您的手机号..." onChange={(event) => {
-                            this.setState({
-                                phone: event.target.value
-                            });
-                        }}/>
+                        <input id={"phone"} className={"form-control"} type="text" placeholder="请输入您的手机号..."
+                               onChange={(event) => {
+                                   this.setState({
+                                       phone: event.target.value
+                                   });
+                               }}/>
                     </div>
                     <div className="form-group">
                         <label htmlFor="pwd" className={"input-desc"}>密码</label>
-                        <input id={"pwd"} className={"form-control"} type="password" placeholder="请输入您的密码..." onChange={(event) => {
-                            this.setState({
-                                pwd: event.target.value
-                            });
-                        }}/>
+                        <input id={"pwd"} className={"form-control"} type="password" placeholder="请输入您的密码..."
+                               onChange={(event) => {
+                                   this.setState({
+                                       pwd: event.target.value
+                                   });
+                               }}/>
                     </div>
                     <div className={"btn-wrap"}>
                         <input type="button" value={"登录"} className={"btn btn-primary"}

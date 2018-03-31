@@ -71,6 +71,14 @@
   height: 200px;
   background: rgba(80, 80, 80, 0.2);
 }
+#home .map-wrap {
+  z-index: 9;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 200px;
+}
 #home .slide {
   position: fixed;
   top: 0;

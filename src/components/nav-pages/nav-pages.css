@@ -113,3 +113,32 @@
   color: #333;
   font-size: 16px;
 }
+#home .service-btn-wrap {
+  margin-top: 10px;
+  padding: 10px;
+  width: 100%;
+  background: #fff;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+#home .service-link {
+  height: 40px;
+  margin: 10px 0;
+  width: 100%;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  color: #fff;
+}
+#home .service-link.recommend {
+  background: #73c3b2;
+}
+#home .service-link.pay {
+  background: #ee7933;
+}
+#home .service-link.contact {
+  background: #279fba;
+}
+#home .service-link.problem {
+  background: #704c6a;
+}

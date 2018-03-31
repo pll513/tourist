@@ -22,7 +22,7 @@ class Blog extends React.Component {
             imgUrl: '',
             showPhotoForm: false,
             formImgs: [],
-            address: '',
+            address: '九寨沟',
             content: '',
         };
     }
@@ -75,47 +75,42 @@ class Blog extends React.Component {
         //纬度
         let latitude = position.coords.latitude;
         
-        alert(longitude + ' ' + latitude);
         console.log(longitude + ' ' + latitude);
         
         let geoc = new BMap.Geocoder();
         geoc.getLocation(new BMap.Point(longitude, latitude), function (rs) {
             console.log(rs);
-            console.log(rs.address);
+            this.setState({
+                address: rs.address
+            });
         });
     }
     
     _onError(error) {
-        switch (error.code) {
-            case error.PERMISSION_DENIED:
-                alert("用户拒绝对获取地理位置的请求");
-                break;
-            
-            case error.POSITION_UNAVAILABLE:
-                alert("位置信息是不可用的");
-                break;
-            
-            case error.TIMEOUT:
-                alert("请求用户地理位置超时");
-                break;
-            
-            case error.UNKNOWN_ERROR:
-                alert("未知错误");
-                break;
-        }
+        // switch (error.code) {
+        //     case error.PERMISSION_DENIED:
+        //         alert("用户拒绝对获取地理位置的请求");
+        //         break;
+        //
+        //     case error.POSITION_UNAVAILABLE:
+        //         alert("位置信息是不可用的");
+        //         break;
+        //
+        //     case error.TIMEOUT:
+        //         alert("请求用户地理位置超时");
+        //         break;
+        //
+        //     case error.UNKNOWN_ERROR:
+        //         alert("未知错误");
+        //         break;
+        // }
     }
     
     _handleCameraClick() {
         let BMap = window.BMap;
         if (!this.state.showPhotoForm) {
             // 如果刚刚展开
-            let geoc = new BMap.Geocoder();
-            geoc.getLocation(new BMap.Point(116.322987, 39.983424), (rs) => {
-                console.log(rs.address);
-                this.setState({
-                    address: rs.address
-                });
-            });
+            this._getLocation();
         }
         this.setState({
             showPhotoForm: !this.state.showPhotoForm
@@ -146,13 +141,12 @@ class Blog extends React.Component {
         });
     }
     
-    _handlePhotoFormSubmit() {
-    
-    }
-    
     _handlePhoneFormCancel() {
         this.setState({
-            showPhotoForm: false
+            showPhotoForm: false,
+            formImgs: [],
+            address: '',
+            content: '',
         });
     }
     
