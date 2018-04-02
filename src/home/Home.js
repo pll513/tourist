@@ -24,9 +24,12 @@ class Home extends React.Component {
         this.state = {
             navpos: pos,
             locations: [],
+            counts: [],
+            showCount: false,
             myLocation: {lng: 103.8823493651, lat: 33.2950658561},
             timer1: null,
             timer2: null,
+            timer3: null,
             yourPosition: true,
         };
         
@@ -76,9 +79,47 @@ class Home extends React.Component {
             this._getLocation(false);
         }, 20000);
         
+        // 景点周围人数
+        fetch(BASE_URL + '/count', {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json'
+            }
+        }).then((res) => {
+            return res.json().then((data) => {
+                console.log(data);
+                data = data || [];
+                this.setState({
+                    counts: data,
+                });
+            })
+        }).catch((err) => {
+            console.log(err);
+        });
+        
+        let timer3 = setInterval(() => {
+            fetch(BASE_URL + '/count', {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then((res) => {
+                return res.json().then((data) => {
+                    console.log(data);
+                    data = data || [];
+                    this.setState({
+                        counts: data,
+                    });
+                })
+            }).catch((err) => {
+                console.log(err);
+            });
+        }, 10000);
+        
         this.setState({
             timer1: timer,
-            timer2: timer2
+            timer2: timer2,
+            timer3: timer3
         });
         
     }
@@ -86,6 +127,7 @@ class Home extends React.Component {
     componentWillUnmount() {
         this.state.timer1 && clearInterval(this.state.timer1);
         this.state.timer2 && clearInterval(this.state.timer2);
+        this.state.timer3 && clearInterval(this.state.timer3);
     }
     
     _getLocation(first) {
@@ -100,21 +142,23 @@ class Home extends React.Component {
                     myLocation: {lng: lng, lat: lat},
                     yourPosition: first
                 });
-                fetch(BASE_URL + '/location', {
-                    method: 'POST',
-                    headers: {
-                        'Authorization': 'Basic ' + window.btoa(loadToken() + ':unused'),
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    data: JSON.stringify({location: [lng, lat]})
-                }).then((res) => {
-                    return res.json().then((data) => {
-                        console.log(data);
-                    })
-                }).catch((err) => {
-                    console.log(err);
-                });
+                if (loadToken()) {
+                    fetch(BASE_URL + '/location', {
+                        method: 'POST',
+                        headers: {
+                            'Authorization': 'Basic ' + window.btoa(loadToken() + ':unused'),
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify({location: [lng, lat]})
+                    }).then((res) => {
+                        return res.json().then((data) => {
+                            console.log(data);
+                        })
+                    }).catch((err) => {
+                        console.log(err);
+                    });
+                }
             }
             else {
                 console.log('failed to get address in page home');
@@ -126,6 +170,22 @@ class Home extends React.Component {
         return (
             <div id="home">
                 <div className={"map-wrap"}>
+                    <button className={"count-show"} onClick={() => {
+                        this.setState({showCount: !this.state.showCount})
+                    }}>人数分布
+                    </button>
+                    <div className={this.state.showCount ? "count-list-wrap" : "none count-list"}>
+                        <div className={"count-list"}>
+                            {this.state.counts.map((item) => {
+                                return (
+                                    <div className={"count-item"}>
+                                        <span className={"count-item__name"}>{item.name + ': '}</span>
+                                        <span className={"count-item__name"}>{item.count + '人'}</span>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </div>
                     <Map style={{height: '100%'}} center={this.state.myLocation} zoom={11}>
                         {this.state.locations.map((location, index) => {
                             return (
