@@ -107,7 +107,7 @@ class Home extends React.Component {
                         'Content-Type': 'application/json',
                         'Accept': 'application/json'
                     },
-                    data: JSON.stringify({location: {lng: lng, lat: lat}})
+                    data: JSON.stringify({location: [lng, lat]})
                 }).then((res) => {
                     return res.json().then((data) => {
                         console.log(data);
