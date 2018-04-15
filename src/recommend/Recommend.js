@@ -5,6 +5,7 @@ import NavHeader from '../components/nav-header/NavHeader';
 import re1 from '../imgs/recommend1.jpg';
 import re2 from '../imgs/recommend2.jpg';
 import re3 from '../imgs/recommend3.jpg';
+import toastIt from 'toastit.js';
 
 class Recommend extends React.Component {
     render() {
@@ -22,16 +23,16 @@ class Recommend extends React.Component {
                     </div>
                     <div className={"category clearfix"}>
                         <div className={"category-item-wrap"}>
-                            <div className={"category-item hotel"}>酒店</div>
+                            <div className={"category-item hotel"} onClick={()=>{toastIt('因九寨沟关闭 信息未能显示 您可以打开美团App查看', 2000)}}>酒店</div>
                         </div>
                         <div className={"category-item-wrap"}>
-                            <div className={"category-item food"}>美食</div>
+                            <div className={"category-item food"} onClick={()=>{toastIt('因九寨沟关闭 信息未能显示 您可以打开美团App查看', 2000)}}>美食</div>
                         </div>
                         <div className={"category-item-wrap"}>
-                            <div className={"category-item show"}>表演</div>
+                            <div className={"category-item show"} onClick={()=>{toastIt('因九寨沟关闭 表演信息未能显示 敬请谅解', 2000)}}>表演</div>
                         </div>
                         <div className={"category-item-wrap"}>
-                            <div className={"category-item activity"}>活动</div>
+                            <div className={"category-item activity"} onClick={()=>{toastIt('因九寨沟关闭 活动信息未能显示 敬请谅解', 2000)}}>活动</div>
                         </div>
                     </div>
                     <div className={"recommend-list"}>

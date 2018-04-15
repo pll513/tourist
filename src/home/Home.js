@@ -3,14 +3,8 @@ import NavBottom from '../components/nav-bottom/NavBottom';
 import NavPages from '../components/nav-pages/NavPages';
 import {BASE_URL} from '../config/network';
 import {loadToken} from '../utils/utils';
-import {Link} from 'react-router-dom';
-import slider1 from '../imgs/slider1.jpg';
-import slider2 from '../imgs/slider2.jpg';
-import slider3 from '../imgs/slider3.jpg';
-import slider4 from '../imgs/slider4.jpg';
-import slider5 from '../imgs/slider5.png';
-import Slider from 'react-slider-light';
-import {Map, Circle, Marker, InfoWindow, Polyline, NavigationControl} from 'react-bmap';
+import {Redirect} from 'react-router-dom';
+import {Map, Marker, InfoWindow, NavigationControl} from 'react-bmap';
 import './home.css';
 
 
@@ -31,12 +25,31 @@ class Home extends React.Component {
             timer2: null,
             timer3: null,
             yourPosition: true,
+            sightLocations: [],
+            showContactInfo: false,
         };
         
     }
     
     componentDidMount() {
         this._getLocation(true);
+        fetch(BASE_URL + '/location_num', {
+            method: 'GET',
+            headers: {
+                'Authorization': 'Basic ' + window.btoa(loadToken() + ':unused'),
+                'Accept': 'application/json'
+            }
+        }).then((res) => {
+            return res.json().then((data) => {
+                console.log(data);
+                data = data || [];
+                this.setState({
+                    sightLocations: data,
+                });
+            })
+        }).catch((err) => {
+            console.log(err);
+        });
         fetch(BASE_URL + '/location', {
             method: 'GET',
             headers: {
@@ -83,6 +96,7 @@ class Home extends React.Component {
         fetch(BASE_URL + '/count', {
             method: 'GET',
             headers: {
+                'Authorization': 'Basic ' + window.btoa(loadToken() + ':unused'),
                 'Accept': 'application/json'
             }
         }).then((res) => {
@@ -101,6 +115,7 @@ class Home extends React.Component {
             fetch(BASE_URL + '/count', {
                 method: 'GET',
                 headers: {
+                    'Authorization': 'Basic ' + window.btoa(loadToken() + ':unused'),
                     'Accept': 'application/json'
                 }
             }).then((res) => {
@@ -122,6 +137,12 @@ class Home extends React.Component {
             timer3: timer3
         });
         
+    }
+    
+    _toggleContactInfo(show) {
+        this.setState({
+            showContactInfo: show
+        });
     }
     
     componentWillUnmount() {
@@ -167,8 +188,29 @@ class Home extends React.Component {
     }
     
     render() {
+        if (!loadToken()) {
+            return <Redirect push to={{
+                pathname: '/login',
+                query: {from: '/'}
+            }}/>;
+        }
         return (
             <div id="home">
+                <div className={this.state.showContactInfo ? "contact-mask" : "none contact-mask"} onClick={() => {
+                    this._toggleContactInfo(false)
+                }}>
+                    <div className={"contact-info"} onclick={() => {
+                    }}>
+                        <div className={"contact-info__item"}>
+                            <span>邮箱：</span>
+                            <span>youxiang@qq.com</span>
+                        </div>
+                        <div className={"contact-info__item"}>
+                            <span>电话：</span>
+                            <a href={"tel:0837-7739753"}>0837-7739753</a>
+                        </div>
+                    </div>
+                </div>
                 <div className={"map-wrap"}>
                     <button className={"count-show"} onClick={() => {
                         this.setState({showCount: !this.state.showCount})
@@ -187,6 +229,16 @@ class Home extends React.Component {
                         </div>
                     </div>
                     <Map style={{height: '100%'}} center={this.state.myLocation} zoom={11}>
+                        {this.state.sightLocations.map((location, index) => {
+                            return (
+                                <Marker position={{lng: location.s_location[0], lat: location.s_location[1]}}>
+                                    <div className={"sight-icon"}>
+                                        <div className={"sight-icon__icon"}></div>
+                                        <div className={"sight-icon__name"}>{location.name}</div>
+                                    </div>
+                                </Marker>
+                            );
+                        })}
                         {this.state.locations.map((location, index) => {
                             return (
                                 <Marker position={{lng: location.location.lng, lat: location.location.lat}}
@@ -195,6 +247,7 @@ class Home extends React.Component {
                         })}
                         <NavigationControl/>
                         <Marker position={this.state.myLocation} icon={"loc_blue"}/>
+                        
                         {this.state.yourPosition ? <InfoWindow position={this.state.myLocation} text="你的位置"/> : null}
                     </Map>
                 </div>
@@ -223,7 +276,7 @@ class Home extends React.Component {
                 {/*</div>*/}
                 {/*</Slider>*/}
                 {/*</div>*/}
-                <NavPages pos={this.state.navpos}/>
+                <NavPages pos={this.state.navpos} toggleContactInfo={(show) => this._toggleContactInfo(show)}/>
                 <NavBottom pos={-1}/>
             </div>
         );

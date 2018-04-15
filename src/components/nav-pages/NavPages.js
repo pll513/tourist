@@ -104,7 +104,7 @@ class NavPages extends React.Component {
                         <div className={"nav-pages__page" + (pos === 1 ? '' : ' none')}>
                             {routes.map((route, index) => {
                                 let sights = [];
-                                if (route.sights) sights = route.sights.slice(0,4);
+                                if (route.sights) sights = route.sights.slice(0, 4);
                                 console.log(index + '-------');
                                 console.log(sights);
                                 return (
@@ -132,8 +132,10 @@ class NavPages extends React.Component {
                             <div className={"service-btn-wrap"}>
                                 <Link className={"btn service-link recommend"} to={"/recommend"}>为你优选</Link>
                                 <Link className={"btn service-link pay"} to={"/pay"}>购票服务</Link>
-                                <Link className={"btn service-link contact"} to={"#"}>联系我们</Link>
-                                <Link className={"btn service-link problem"} to={"#"}>常见问题</Link>
+                                <Link className={"btn service-link contact"} to={"#"} onClick={() => {
+                                    this.props.toggleContactInfo(true)
+                                }}>联系我们</Link>
+                                <Link className={"btn service-link problem"} to={"/problems"}>常见问题</Link>
                             </div>
                         </div>
                     </div>
@@ -145,7 +147,7 @@ class NavPages extends React.Component {
                     <NavBar txts={['必游美景', '推荐路线', '为您服务']} pos={pos}
                             updatePosition={(newPos) => this._updatePosition(newPos)}/>
                     <div className="nav-pages__content">
-
+                    
                     </div>
                 </div>
             );

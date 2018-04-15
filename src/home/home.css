@@ -19,6 +19,7 @@
   right: 10px;
   color: #fff;
   font-size: 18px;
+  outline: 0;
 }
 #home .count-list-wrap {
   z-index: 100;
@@ -252,4 +253,55 @@
 }
 #home .slider-item {
   height: 100%;
+}
+#home .sight-icon {
+  position: relative;
+}
+#home .sight-icon__icon {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  background: #f54336;
+  width: 20px;
+  height: 20px;
+  border-radius: 99px;
+}
+#home .sight-icon__name {
+  position: absolute;
+  left: 14px;
+  top: -8px;
+  width: 100px;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: left;
+}
+#home .contact-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background: rgba(96, 96, 96, 0.1);
+}
+#home .contact-info {
+  color: #777;
+  background: #fff;
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 0;
+  right: 0;
+  border-radius: 6px;
+  margin: -50px auto auto;
+  padding: 4px 10px;
+  width: 240px;
+  height: 72px;
+}
+#home .contact-info__item {
+  height: 32px;
+  line-height: 32px;
+}
+#home .contact-info__item:first-child {
+  border-bottom: 1px solid #ddd;
 }

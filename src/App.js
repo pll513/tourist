@@ -12,6 +12,7 @@ import Blog from './blog/Blog';
 import Pay from './pay/Pay';
 import PayInfo from './pay-info/PayInfo';
 import Recommend from './recommend/Recommend';
+import Problems from './problems/Problems';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 // import BMap from "bmap";
 
@@ -38,7 +39,7 @@ class App extends Component {
                     <Route exact path="/pay" component={Pay}/>
                     <Route exact path="/pay-info" component={PayInfo}/>
                     <Route exact path="/recommend" component={Recommend}/>
-                
+                    <Route exact path="/problems" component={Problems}/>
                 </Switch>
             </BrowserRouter>
         );
