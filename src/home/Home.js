@@ -96,7 +96,6 @@ class Home extends React.Component {
         fetch(BASE_URL + '/count', {
             method: 'GET',
             headers: {
-                'Authorization': 'Basic ' + window.btoa(loadToken() + ':unused'),
                 'Accept': 'application/json'
             }
         }).then((res) => {
@@ -115,7 +114,6 @@ class Home extends React.Component {
             fetch(BASE_URL + '/count', {
                 method: 'GET',
                 headers: {
-                    'Authorization': 'Basic ' + window.btoa(loadToken() + ':unused'),
                     'Accept': 'application/json'
                 }
             }).then((res) => {
@@ -188,12 +186,6 @@ class Home extends React.Component {
     }
     
     render() {
-        if (!loadToken()) {
-            return <Redirect push to={{
-                pathname: '/login',
-                query: {from: '/'}
-            }}/>;
-        }
         return (
             <div id="home">
                 <div className={this.state.showContactInfo ? "contact-mask" : "none contact-mask"} onClick={() => {
